@@ -51,10 +51,10 @@
             "unit_mobile": "percent",
             "percent_width_mobile": 100,
             "pixel_height_mobile": 120,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "padding-block-start": 100,
+            "padding-block-end": 100,
+            "padding-inline-start": 100,
+            "padding-inline-end": 100
           },
           "blocks": {}
         }
