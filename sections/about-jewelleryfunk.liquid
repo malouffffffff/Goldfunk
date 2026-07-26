@@ -38,6 +38,30 @@
   {% endfor %}
 </section>
 
+{% stylesheet %}
+  .jf-about { background: var(--color-background, #fcfbf8); color: var(--color-foreground, #20201e); padding-bottom: clamp(6rem, 12vw, 12rem); }
+  .jf-about__hero { display: grid; grid-template-columns: minmax(18rem, .9fr) minmax(0, 1.1fr); min-height: min(48rem, 78svh); }
+  .jf-about__hero-copy { align-content: center; display: grid; justify-items: start; padding: clamp(7rem, 13vw, 14rem) clamp(1.5rem, 8vw, 10rem) clamp(4rem, 8vw, 8rem); }
+  .jf-about h1, .jf-about h2 { font-family: "Iowan Old Style", "Baskerville", Georgia, serif; font-weight: 400; letter-spacing: -.045em; line-height: .88; }
+  .jf-about h1 { font-size: clamp(3.8rem, 7.4vw, 8.5rem); margin: 1rem 0 1.8rem; max-width: 8ch; }
+  .jf-about__intro { font-size: clamp(1rem, 1.2vw, 1.2rem); line-height: 1.75; margin-bottom: 2.2rem; max-width: 31rem; }
+  .jf-about__hero-image { min-height: 32rem; }
+  .jf-about__hero-image img, .jf-about__image img { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .jf-about__story { margin: clamp(6rem, 14vw, 13rem) auto; max-width: 47rem; padding: 0 1.5rem; }
+  .jf-about__story h2 { font-size: clamp(3rem, 6vw, 6.8rem); margin: 1rem 0 2rem; max-width: 8ch; }
+  .jf-about__body { font-size: clamp(1rem, 1.2vw, 1.22rem); line-height: 1.8; max-width: 39rem; }
+  .jf-about__body p + p { margin-top: 1.2rem; }
+  .jf-about__image { margin: clamp(5rem, 10vw, 10rem) auto; max-width: min(92vw, 105rem); }
+  .jf-about__image img { aspect-ratio: 1.65; }
+  .jf-about__image figcaption { font-size: .65rem; letter-spacing: .12em; margin-top: .8rem; text-transform: uppercase; }
+  @media (max-width: 749px) {
+    .jf-about__hero { grid-template-columns: 1fr; }
+    .jf-about__hero-copy { padding-top: 8rem; }
+    .jf-about__hero-image { min-height: 27rem; }
+    .jf-about__image img { aspect-ratio: .85; }
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "JF About us",
