@@ -11,36 +11,6 @@
   "type": "header",
   "name": "Header",
   "sections": {
-    "header_announcements_9jGBFp": {
-      "type": "header-announcements",
-      "blocks": {
-        "announcement_BxgCk9": {
-          "type": "_announcement",
-          "settings": {
-            "text": "Free shipping on orders over 25€",
-            "link": "",
-            "font": "var(--font-heading--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_BxgCk9"
-      ],
-      "name": "t:names.announcement_bar",
-      "settings": {
-        "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-1",
-        "divider_width": 1,
-        "padding-block-start": 15,
-        "padding-block-end": 15
-      }
-    },
     "header_section": {
       "type": "header",
       "blocks": {
@@ -109,41 +79,9 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
-    },
-    "header_announcements_epDpC6": {
-      "type": "header-announcements",
-      "blocks": {
-        "announcement_tdNtMW": {
-          "type": "_announcement",
-          "settings": {
-            "text": "Discover your new favourite accessory! Because of high demand, delivery times may be longer.",
-            "link": "",
-            "font": "var(--font-accent--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_tdNtMW"
-      ],
-      "name": "t:names.announcement_bar",
-      "settings": {
-        "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "scheme-4",
-        "divider_width": 0,
-        "padding-block-start": 15,
-        "padding-block-end": 15
-      }
     }
   },
   "order": [
-    "header_announcements_9jGBFp",
-    "header_section",
-    "header_announcements_epDpC6"
+    "header_section"
   ]
 }
