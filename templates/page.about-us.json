@@ -1,16 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "about-jewelleryfunk",
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "eyebrow": "JewelleryFunk",
-        "heading": "Objects for the moments that become yours.",
-        "intro": "<p>Write the beginning of your JewelleryFunk story here.</p>",
+        "heading": "Hi, we're Marie & Sophie - Sisters and the duo behind Goldfunk.",
+        "intro": "<p>Between medical school and finishing high school, we started Jewelleryfunk from a shared love for jewellery, creativity and creating something of our own.<br/><br/>Together, we design gold-toned chokers that are bold, playful and a little unexpected — pieces made to stand out and become part of your favourite moments.<br/><br/>What began as a small idea between two sisters has grown into something we’re incredibly excited to share with you.</p>",
+        "image": "shopify://shop_images/FullSizeRender_2_ad777092-73a6-4b30-9a55-730e6f242696.heic",
         "button_label": "",
         "button_link": ""
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
