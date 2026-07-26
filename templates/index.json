@@ -11,6 +11,58 @@
   "sections": {
     "premium_home": {
       "type": "premium-home",
+      "blocks": {
+        "instagram_3DEm9t": {
+          "type": "instagram",
+          "settings": {
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-25.jpg"
+          }
+        },
+        "instagram_LH38x3": {
+          "type": "instagram",
+          "settings": {
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24_2.jpg"
+          }
+        },
+        "instagram_iU4deK": {
+          "type": "instagram",
+          "settings": {
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24.jpg"
+          }
+        },
+        "collection_mLpV43": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "",
+            "caption": ""
+          }
+        },
+        "collection_pyJN6Y": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "",
+            "caption": ""
+          }
+        },
+        "collection_JU3zY7": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "instagram_3DEm9t",
+        "instagram_LH38x3",
+        "instagram_iU4deK",
+        "collection_mLpV43",
+        "collection_pyJN6Y",
+        "collection_JU3zY7"
+      ],
       "settings": {
         "hero_image": "shopify://shop_images/PHOTO-2026-06-04-11-05-54.jpg",
         "hero_background_image": "shopify://shop_images/45f93158-e1a3-49a6-9361-4c1f41f7486f.jpg",
