@@ -9,11 +9,21 @@
     {% else %}
       <div class="jf-spotify__art-placeholder"></div>
     {% endif %}
+    <svg class="jf-spotify__cutout" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <mask id="spotify-cutout-{{ section.id }}">
+          <rect width="100%" height="100%" fill="white"></rect>
+          <text x="55" y="450" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_one | escape }}</text>
+          <text x="55" y="630" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_two | escape }}</text>
+        </mask>
+      </defs>
+      <rect width="100%" height="100%" mask="url(#spotify-cutout-{{ section.id }})" fill="currentColor"></rect>
+    </svg>
   </div>
 
   <div class="jf-spotify__content">
     <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
-    <h2>{{ section.settings.heading }}</h2>
+    <h2 class="visually-hidden">{{ section.settings.heading }}</h2>
     {% if section.settings.copy != blank %}<p>{{ section.settings.copy }}</p>{% endif %}
 
     {% if section.settings.playlist_url != blank %}
@@ -46,10 +56,13 @@
     background: var(--color-primary);
     min-height: 30rem;
     overflow: hidden;
+    position: relative;
   }
 
   .jf-spotify__art img { display: block; height: 100%; object-fit: cover; width: 100%; }
   .jf-spotify__art-placeholder { background: radial-gradient(circle at 40% 40%, var(--color-foreground), transparent 32%); height: 100%; opacity: .2; }
+  .jf-spotify__cutout { color: rgb(var(--color-background-rgb) / .76); height: 100%; inset: 0; position: absolute; width: 100%; }
+  .jf-spotify__cutout-text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 150px; font-weight: 500; letter-spacing: -9px; }
   .jf-spotify__content { align-content: center; color: var(--color-foreground); display: grid; justify-items: start; opacity: 1 !important; padding: clamp(3rem, 8vw, 8rem); visibility: visible !important; }
   .jf-spotify__content h2 { color: var(--color-foreground-heading); font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(3rem, 5.3vw, 6rem); font-weight: 400; letter-spacing: -.035em; line-height: .9; margin: 1rem 0 1.6rem; max-width: 8ch; }
   .jf-spotify__content p { color: var(--color-foreground); line-height: 1.8; margin: 0 0 2rem; max-width: 29rem; }
@@ -69,7 +82,9 @@
     { "type": "image_picker", "id": "image", "label": "Playlist image" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The JewelleryFunk sound" },
-    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Sound for the moment." },
+    { "type": "textarea", "id": "heading", "label": "Accessible heading", "default": "Sound for the moment." },
+    { "type": "text", "id": "cutout_line_one", "label": "Large image text — line one", "default": "Sound for" },
+    { "type": "text", "id": "cutout_line_two", "label": "Large image text — line two", "default": "the moment." },
     { "type": "textarea", "id": "copy", "label": "Text", "default": "A playlist for getting ready, going out and every small moment in between." }
   ],
   "presets": [{ "name": "Spotify playlist" }]
