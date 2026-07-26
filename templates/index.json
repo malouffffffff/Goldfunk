@@ -12,10 +12,29 @@
     "premium_home": {
       "type": "premium-home",
       "blocks": {
+        "collection_mFKT7b": {
+          "type": "collection",
+          "settings": {
+            "collection": "pailetten",
+            "image": "shopify://shop_images/DFB576E9-E31D-4F7F-BA4B-B216C0E2F954.jpg",
+            "heading": "",
+            "caption": ""
+          }
+        },
+        "collection_kBhtic": {
+          "type": "collection",
+          "settings": {
+            "collection": "stoff",
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-19-02_2_9316abc5-bca0-4f35-91ba-42413285f5e8.jpg",
+            "heading": "",
+            "caption": ""
+          }
+        },
         "collection_rfpnRG": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "silver-disco",
+            "image": "shopify://shop_images/PHOTO-2026-06-04-11-05-50.jpg",
             "heading": "",
             "caption": ""
           }
@@ -23,7 +42,8 @@
         "collection_eVd4PN": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "mirror-miracle",
+            "image": "shopify://shop_images/1a958608-53e4-412e-9a6b-f94cde5c22dd.jpg",
             "heading": "",
             "caption": ""
           }
@@ -75,6 +95,8 @@
         }
       },
       "block_order": [
+        "collection_mFKT7b",
+        "collection_kBhtic",
         "collection_rfpnRG",
         "collection_eVd4PN",
         "instagram_3DEm9t",
