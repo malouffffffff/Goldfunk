@@ -1,30 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "premium_home": {
       "type": "premium-home",
       "settings": {
+        "hero_image": "shopify://shop_images/PHOTO-2026-06-04-11-05-54.jpg",
+        "hero_background_image": "shopify://shop_images/45f93158-e1a3-49a6-9361-4c1f41f7486f.jpg",
+        "hero_background_width": 100,
+        "hero_background_height": 55,
+        "hero_background_x": 50,
+        "hero_background_y": 25,
+        "hero_logo_position": "bottom-right",
+        "hero_logo_size": 20,
+        "hero_scroll_length": 500,
         "hero_eyebrow": "JewelleryFunk — Modern heirlooms",
         "hero_heading": "Made to be remembered.",
         "hero_copy": "Modern heirlooms, designed to move with you.",
         "hero_button": "Explore the collection",
+        "hero_link": "",
         "story_eyebrow": "Our point of view",
         "story_heading": "The art of everyday gold.",
         "story_copy": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal.",
         "story_button": "Meet JewelleryFunk",
+        "story_link": "",
+        "collections_link": "",
+        "featured_collection": "",
         "products_heading": "The new essentials.",
+        "best_seller_collection": "",
+        "best_sellers_heading": "Most wanted.",
         "editorial_eyebrow": "Designed with intention",
         "editorial_heading": "A little more you.",
         "editorial_copy": "Pieces with a considered presence: effortless alone, unforgettable together.",
         "editorial_button": "Read our story",
+        "editorial_link": "",
         "instagram_heading": "Worn your way.",
         "instagram_handle": "@jewelleryfunk",
+        "instagram_link": "",
         "newsletter_heading": "A little something, just for you.",
         "newsletter_copy": "New pieces, private previews and the occasional note from our world.",
         "newsletter_button": "Subscribe"
-      },
-      "blocks": {},
-      "block_order": []
+      }
     }
   },
-  "order": ["premium_home"]
+  "order": [
+    "premium_home"
+  ]
 }
