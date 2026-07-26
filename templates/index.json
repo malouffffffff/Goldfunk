@@ -12,6 +12,22 @@
     "premium_home": {
       "type": "premium-home",
       "blocks": {
+        "collection_rfpnRG": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "",
+            "caption": ""
+          }
+        },
+        "collection_eVd4PN": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "heading": "",
+            "caption": ""
+          }
+        },
         "instagram_3DEm9t": {
           "type": "instagram",
           "settings": {
@@ -59,6 +75,8 @@
         }
       },
       "block_order": [
+        "collection_rfpnRG",
+        "collection_eVd4PN",
         "instagram_3DEm9t",
         "instagram_LH38x3",
         "instagram_iU4deK",
