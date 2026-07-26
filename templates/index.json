@@ -42,7 +42,8 @@
         "collection_pyJN6Y": {
           "type": "collection",
           "settings": {
-            "collection": "",
+            "collection": "silver-disco",
+            "image": "shopify://shop_images/PHOTO-2026-06-04-11-05-50.jpg",
             "heading": "",
             "caption": ""
           }
@@ -51,6 +52,7 @@
           "type": "collection",
           "settings": {
             "collection": "",
+            "image": "shopify://shop_images/IMG_7367.heic",
             "heading": "",
             "caption": ""
           }
