@@ -70,7 +70,7 @@
           "type": "collection",
           "settings": {
             "collection": "samt",
-            "image": "shopify://shop_images/IMG_7367.heic",
+            "image": "shopify://shop_images/ed53fe42-0bdc-4c28-b53b-7a80c8d2111e.jpg",
             "heading": "",
             "caption": ""
           }
@@ -108,14 +108,14 @@
         "hero_logo_position": "bottom-right",
         "hero_logo_size": 20,
         "hero_scroll_length": 500,
-        "hero_eyebrow": "JewelleryFunk",
-        "hero_heading": "your daily dose of gold",
-        "hero_copy": "designed to move with you.",
+        "hero_eyebrow": "JewelleryFunk — Modern heirlooms",
+        "hero_heading": "Made to be remembered.",
+        "hero_copy": "Modern heirlooms, designed to move with you.",
         "hero_button": "Explore the collection",
         "hero_link": "",
         "story_eyebrow": "Our point of view",
-        "story_heading": "Handmade with character",
-        "story_copy": "Each piece is crafted by hand carefully & consciously. \nEvery detail is chosen with curiosity & care. Each colour & texture is for the small surprises it brings to life.",
+        "story_heading": "The art of everyday gold.",
+        "story_copy": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal.",
         "story_button": "Meet JewelleryFunk",
         "story_link": "",
         "collections_link": "",
@@ -144,19 +144,19 @@
         "image_3DEm9t": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/b5e5bddb-a7cf-4761-9cfb-88fbbdbc6962.jpg"
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-25.jpg"
           }
         },
         "image_LH38x3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/a679f458-3060-4365-bd11-25060e229d35.jpg"
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24_2.jpg"
           }
         },
         "image_iU4deK": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/c86f7c2c-4bd7-4a50-945b-89e136b64720_2.jpg"
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24.jpg"
           }
         }
       },
@@ -170,7 +170,7 @@
         "eyebrow": "In the everyday",
         "heading": "Worn your way.",
         "handle": "@jewelleryfunk",
-        "instagram_link": "https://www.instagram.com/jewelleryfunk/"
+        "instagram_link": ""
       }
     },
     "newsletter_signup": {
@@ -178,7 +178,7 @@
       "settings": {
         "color_scheme": "scheme-3",
         "eyebrow": "Private notes",
-        "heading": "A little something, just for you.",
+        "heading": "be part of the club",
         "copy": "New pieces, private previews and the occasional note from our world.",
         "placeholder": "Your email address",
         "button": "Subscribe",
