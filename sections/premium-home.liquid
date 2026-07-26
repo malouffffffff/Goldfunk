@@ -160,30 +160,6 @@
     </div>
   </section>
 
-  {% if section.settings.spotify_playlist_url != blank %}
-    {% assign spotify_embed_url = section.settings.spotify_playlist_url | replace: 'open.spotify.com/playlist', 'open.spotify.com/embed/playlist' %}
-    <section class="jf-spotify color-{{ section.settings.spotify_color_scheme }}">
-      <div class="jf-spotify__art" data-jf-reveal>
-        {% if section.settings.spotify_image != blank %}
-          {{ section.settings.spotify_image | image_url: width: 1200 | image_tag: widths: '500, 800, 1200', loading: 'lazy', alt: section.settings.spotify_heading }}
-        {% endif %}
-      </div>
-      <div class="jf-spotify__content" data-jf-reveal>
-        <span class="jf-eyebrow">{{ section.settings.spotify_eyebrow }}</span>
-        <h2>{{ section.settings.spotify_heading }}</h2>
-        <p>{{ section.settings.spotify_copy }}</p>
-        <iframe
-          class="jf-spotify__player"
-          src="{{ spotify_embed_url }}"
-          title="{{ section.settings.spotify_heading | escape }}"
-          loading="lazy"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        ></iframe>
-        <a class="jf-link" href="{{ section.settings.spotify_playlist_url }}" target="_blank" rel="noopener">Open on Spotify</a>
-      </div>
-    </section>
-  {% endif %}
-
   {% assign instagram_blocks = section.blocks | where: 'type', 'instagram' %}
   {% if instagram_blocks.size > 0 %}
     <section class="jf-instagram color-{{ section.settings.instagram_color_scheme }}">
@@ -274,13 +250,6 @@
     { "type": "textarea", "id": "editorial_copy", "label": "Editorial copy", "default": "Pieces with a considered presence: effortless alone, unforgettable together." },
     { "type": "text", "id": "editorial_button", "label": "Editorial button", "default": "Read our story" },
     { "type": "url", "id": "editorial_link", "label": "Editorial link" },
-    { "type": "header", "content": "Spotify playlist" },
-    { "type": "url", "id": "spotify_playlist_url", "label": "Spotify playlist URL" },
-    { "type": "image_picker", "id": "spotify_image", "label": "Spotify playlist image" },
-    { "type": "color_scheme", "id": "spotify_color_scheme", "label": "Spotify color scheme", "default": "scheme-5" },
-    { "type": "text", "id": "spotify_eyebrow", "label": "Spotify eyebrow", "default": "The JewelleryFunk sound" },
-    { "type": "textarea", "id": "spotify_heading", "label": "Spotify heading", "default": "Sound for the moment." },
-    { "type": "textarea", "id": "spotify_copy", "label": "Spotify copy", "default": "A playlist for getting ready, going out and every small moment in between." },
     { "type": "textarea", "id": "instagram_heading", "label": "Instagram heading", "default": "Worn your way." },
     { "type": "text", "id": "instagram_handle", "label": "Instagram handle", "default": "@jewelleryfunk" },
     { "type": "url", "id": "instagram_link", "label": "Instagram link" },
