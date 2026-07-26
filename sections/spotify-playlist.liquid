@@ -3,7 +3,7 @@
 %}
 
 <section class="jf-spotify color-{{ section.settings.color_scheme }}" id="spotify-playlist-{{ section.id }}">
-  <div class="jf-spotify__art" data-jf-reveal>
+  <div class="jf-spotify__art">
     {% if section.settings.image != blank %}
       {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '500, 800, 1200', loading: 'lazy', alt: section.settings.heading }}
     {% else %}
@@ -11,7 +11,7 @@
     {% endif %}
   </div>
 
-  <div class="jf-spotify__content" data-jf-reveal>
+  <div class="jf-spotify__content">
     <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
     <h2>{{ section.settings.heading }}</h2>
     {% if section.settings.copy != blank %}<p>{{ section.settings.copy }}</p>{% endif %}
@@ -28,6 +28,38 @@
     {% endif %}
   </div>
 </section>
+
+{% stylesheet %}
+  .jf-spotify {
+    align-items: stretch;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    display: grid;
+    grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+    min-height: 34rem;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .jf-spotify__art {
+    aspect-ratio: 1;
+    background: var(--color-primary);
+    min-height: 30rem;
+    overflow: hidden;
+  }
+
+  .jf-spotify__art img { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .jf-spotify__art-placeholder { background: radial-gradient(circle at 40% 40%, var(--color-foreground), transparent 32%); height: 100%; opacity: .2; }
+  .jf-spotify__content { align-content: center; color: var(--color-foreground); display: grid; justify-items: start; opacity: 1 !important; padding: clamp(3rem, 8vw, 8rem); visibility: visible !important; }
+  .jf-spotify__content h2 { color: var(--color-foreground-heading); font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(3rem, 5.3vw, 6rem); font-weight: 400; letter-spacing: -.035em; line-height: .9; margin: 1rem 0 1.6rem; max-width: 8ch; }
+  .jf-spotify__content p { color: var(--color-foreground); line-height: 1.8; margin: 0 0 2rem; max-width: 29rem; }
+  .jf-spotify__player { border: 0; display: block; height: 152px; margin-bottom: 1.75rem; max-width: 38rem; width: 100%; }
+
+  @media screen and (max-width: 749px) {
+    .jf-spotify { grid-template-columns: 1fr; }
+    .jf-spotify__art { min-height: 28rem; }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
