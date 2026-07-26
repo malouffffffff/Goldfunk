@@ -9,7 +9,7 @@
     {% else %}
       <div class="jf-spotify__art-placeholder"></div>
     {% endif %}
-    <svg class="jf-spotify__cutout" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <svg class="jf-spotify__cutout jf-spotify__cutout--desktop" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <mask id="spotify-cutout-{{ section.id }}">
           <rect width="100%" height="100%" fill="white"></rect>
@@ -18,6 +18,16 @@
         </mask>
       </defs>
       <rect width="100%" height="100%" mask="url(#spotify-cutout-{{ section.id }})" fill="currentColor"></rect>
+    </svg>
+    <svg class="jf-spotify__cutout jf-spotify__cutout--mobile" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <mask id="spotify-cutout-mobile-{{ section.id }}">
+          <rect width="100%" height="100%" fill="white"></rect>
+          <text x="140" y="465" textLength="720" lengthAdjust="spacingAndGlyphs" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_one | escape }}</text>
+          <text x="140" y="715" textLength="720" lengthAdjust="spacingAndGlyphs" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_two | escape }}</text>
+        </mask>
+      </defs>
+      <rect width="100%" height="100%" mask="url(#spotify-cutout-mobile-{{ section.id }})" fill="currentColor"></rect>
     </svg>
   </div>
 
@@ -62,6 +72,7 @@
   .jf-spotify__art img { display: block; height: 100%; object-fit: cover; width: 100%; }
   .jf-spotify__art-placeholder { background: radial-gradient(circle at 40% 40%, var(--color-foreground), transparent 32%); height: 100%; opacity: .2; }
   .jf-spotify__cutout { color: var(--color-background); height: 100%; inset: 0; position: absolute; width: 100%; }
+  .jf-spotify__cutout--mobile { display: none; }
   .jf-spotify__cutout-text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 240px; font-weight: 500; letter-spacing: -14px; }
   .jf-spotify__content { align-content: center; color: var(--color-foreground); display: grid; justify-items: start; opacity: 1 !important; padding: clamp(3rem, 8vw, 8rem); visibility: visible !important; }
   .jf-spotify__content h2 { color: var(--color-foreground-heading); font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif; font-size: clamp(3rem, 5.3vw, 6rem); font-weight: 400; letter-spacing: -.035em; line-height: .9; margin: 1rem 0 1.6rem; max-width: 8ch; }
@@ -71,7 +82,8 @@
   @media screen and (max-width: 749px) {
     .jf-spotify { grid-template-columns: 1fr; }
     .jf-spotify__art { min-height: 28rem; }
-    .jf-spotify__cutout-text { font-size: 155px; letter-spacing: -8px; }
+    .jf-spotify__cutout--desktop { display: none; }
+    .jf-spotify__cutout--mobile { display: block; }
   }
 {% endstylesheet %}
 
