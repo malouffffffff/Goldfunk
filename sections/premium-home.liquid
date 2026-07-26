@@ -20,7 +20,7 @@
   endif
 %}
 
-<div class="jf-home color-{{ section.settings.home_color_scheme }}" id="jf-home-{{ section.id }}" style="--jf-home-hero-color: {{ section.settings.hero_color_scheme.settings.background }};">
+<div class="jf-home color-{{ section.settings.home_color_scheme }}" id="jf-home-{{ section.id }}" style="--jf-home-hero-color: {{ section.settings.hero_color_scheme.settings.background }}; --jf-home-hero-foreground: {{ section.settings.hero_color_scheme.settings.foreground }};">
   <section class="jf-hero jf-hero--collage color-{{ section.settings.hero_color_scheme }}" aria-label="{{ section.settings.hero_heading | strip_html | escape }}" style="--jf-hero-scroll-height: {{ section.settings.hero_scroll_length }}svh;">
     <div class="jf-hero__sticky">
       {% if section.settings.hero_background_image != blank %}
