@@ -1,0 +1,256 @@
+{% liquid
+  assign featured_collection = section.settings.featured_collection
+  assign hero_image = section.settings.hero_image
+  assign band_image_count = 0
+  for image_index in (1..20)
+    assign image_setting = 'band_image_' | append: image_index
+    if section.settings[image_setting] != blank
+      assign band_image_count = band_image_count | plus: 1
+    endif
+  endfor
+
+  if band_image_count <= 3
+    assign band_repeat_count = 24
+  elsif band_image_count <= 8
+    assign band_repeat_count = 12
+  elsif band_image_count <= 14
+    assign band_repeat_count = 8
+  else
+    assign band_repeat_count = 6
+  endif
+%}
+
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  <section class="jf-hero jf-hero--collage" aria-label="{{ section.settings.hero_heading | strip_html | escape }}" style="--jf-hero-scroll-height: {{ section.settings.hero_scroll_length }}svh;">
+    <div class="jf-hero__sticky">
+      {% if section.settings.hero_background_image != blank %}
+        <div class="jf-hero__background" style="--jf-bg-width: {{ section.settings.hero_background_width }}%; --jf-bg-height: {{ section.settings.hero_background_height }}%; --jf-bg-x: {{ section.settings.hero_background_x }}%; --jf-bg-y: {{ section.settings.hero_background_y }}%;">
+          {{ section.settings.hero_background_image | image_url: width: 2800 | image_tag: widths: '750, 1100, 1600, 2200, 2800', loading: 'eager', fetchpriority: 'high', alt: '' }}
+        </div>
+      {% endif %}
+      <div class="jf-hero__wash"></div>
+      <div class="jf-hero__collage" aria-hidden="true">
+        <div class="jf-hero__bands">
+          {% for band_index in (1..4) %}
+            <div class="jf-hero__band jf-hero__band--{{ band_index }}" data-jf-hero-band>
+              <div class="jf-hero__band-track">
+                {% for repeat_index in (1..band_repeat_count) %}
+                  {% for image_index in (1..20) %}
+                    {% assign image_setting = 'band_image_' | append: image_index %}
+                    {% assign band_image = section.settings[image_setting] %}
+                    {% if band_image != blank %}
+                      <div class="jf-hero__band-image">
+                        {{ band_image | image_url: width: 700 | image_tag: widths: '240, 360, 520, 700', loading: 'lazy', alt: '' }}
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        {% if hero_image != blank %}
+          <figure class="jf-hero__card jf-hero__card--main">
+            {{ hero_image | image_url: width: 2200 | image_tag: widths: '750, 1100, 1600, 2200', loading: 'eager', fetchpriority: 'high', alt: '' }}
+            {% if section.settings.hero_logo_image != blank %}
+              <div class="jf-hero__logo-mark jf-hero__logo-mark--{{ section.settings.hero_logo_position }}" style="--jf-logo-size: {{ section.settings.hero_logo_size }}vw;">
+                {{ section.settings.hero_logo_image | image_url: width: 1000 | image_tag: widths: '240, 480, 750, 1000', loading: 'eager', alt: section.settings.hero_logo_image.alt | default: shop.name }}
+              </div>
+            {% endif %}
+          </figure>
+        {% endif %}
+        {% if hero_image == blank %}<div class="jf-hero__fallback jf-hero__card jf-hero__card--main"></div>{% endif %}
+      </div>
+      <div class="jf-hero__inner">
+        <span class="jf-eyebrow">{{ section.settings.hero_eyebrow }}</span>
+        <h1>{{ section.settings.hero_heading }}</h1>
+        {% if section.settings.hero_copy != blank %}<p class="jf-hero__copy">{{ section.settings.hero_copy }}</p>{% endif %}
+        {% if section.settings.hero_link != blank %}<a class="jf-button" href="{{ section.settings.hero_link }}">{{ section.settings.hero_button }}</a>{% endif %}
+      </div>
+      <span class="jf-hero__scroll">Scroll to discover</span>
+    </div>
+  </section>
+
+  <section class="jf-story">
+    <div data-jf-reveal>
+      <span class="jf-eyebrow">{{ section.settings.story_eyebrow }}</span>
+      <h2 class="jf-story__statement">{{ section.settings.story_heading }}</h2>
+    </div>
+    <div class="jf-story__detail" data-jf-reveal>
+      <p>{{ section.settings.story_copy }}</p>
+      {% if section.settings.story_link != blank %}<a class="jf-link" href="{{ section.settings.story_link }}">{{ section.settings.story_button }}</a>{% endif %}
+    </div>
+  </section>
+
+  {% if section.blocks.size > 0 %}
+    <section class="jf-collections">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">Curated for you</span><h2>Pieces with<br>presence.</h2></div>
+        {% if section.settings.collections_link != blank %}<a href="{{ section.settings.collections_link }}" class="jf-link">All collections</a>{% endif %}
+      </div>
+      <div class="jf-collection-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'collection' %}
+            {% assign collection = block.settings.collection %}
+            <a class="jf-collection-card" href="{{ collection.url | default: '#' }}" {{ block.shopify_attributes }} data-jf-reveal>
+              <div class="jf-collection-card__image">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 1200 | image_tag: widths: '400, 700, 1000, 1200', loading: 'lazy', alt: block.settings.heading | default: collection.title }}
+                {% elsif collection.featured_image != blank %}
+                  {{ collection.featured_image | image_url: width: 1200 | image_tag: widths: '400, 700, 1000, 1200', loading: 'lazy', alt: collection.title }}
+                {% endif %}
+              </div>
+              <h3>{{ block.settings.heading | default: collection.title | default: 'Collection' }}</h3>
+              <span>{{ block.settings.caption | default: 'Discover the collection' }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% if featured_collection != blank %}
+    <section class="jf-products">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">Selected pieces</span><h2>{{ section.settings.products_heading }}</h2></div>
+        <a href="{{ featured_collection.url }}" class="jf-link">View all</a>
+      </div>
+      <div class="jf-product-grid">
+        {% for product in featured_collection.products limit: 4 %}
+          <a href="{{ product.url }}" class="jf-product" data-jf-reveal>
+            <div class="jf-product__image">
+              {% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1000 | image_tag: widths: '300, 500, 750, 1000', loading: 'lazy', alt: product.title }}{% endif %}
+            </div>
+            <div class="jf-product__meta"><span class="jf-product__title">{{ product.title }}</span><span>{{ product.price | money }}</span></div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  {% assign best_seller_collection = section.settings.best_seller_collection %}
+  {% if best_seller_collection != blank %}
+    <section class="jf-best-sellers">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">Most loved</span><h2>{{ section.settings.best_sellers_heading }}</h2></div>
+        <a href="{{ best_seller_collection.url }}" class="jf-link">Shop best sellers</a>
+      </div>
+      <div class="jf-best-sellers__grid">
+        {% for product in best_seller_collection.products limit: 4 %}
+          <a href="{{ product.url }}" class="jf-product" data-jf-reveal>
+            <div class="jf-product__image">
+              {% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1200 | image_tag: widths: '360, 600, 900, 1200', loading: 'lazy', alt: product.title }}{% endif %}
+            </div>
+            <div class="jf-product__meta"><span class="jf-product__title">{{ product.title }}</span><span>{{ product.price | money }}</span></div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="jf-editorial">
+    <div class="jf-editorial__image" data-jf-reveal>
+      {% if section.settings.editorial_image != blank %}{{ section.settings.editorial_image | image_url: width: 1800 | image_tag: widths: '700, 1000, 1400, 1800', loading: 'lazy', alt: section.settings.editorial_heading }}{% endif %}
+    </div>
+    <div class="jf-editorial__copy" data-jf-reveal>
+      <span class="jf-eyebrow">{{ section.settings.editorial_eyebrow }}</span>
+      <h2>{{ section.settings.editorial_heading }}</h2>
+      <p>{{ section.settings.editorial_copy }}</p>
+      {% if section.settings.editorial_link != blank %}<a href="{{ section.settings.editorial_link }}" class="jf-button">{{ section.settings.editorial_button }}</a>{% endif %}
+    </div>
+  </section>
+
+  {% assign instagram_blocks = section.blocks | where: 'type', 'instagram' %}
+  {% if instagram_blocks.size > 0 %}
+    <section class="jf-instagram">
+      <div class="jf-instagram__intro" data-jf-reveal><span class="jf-eyebrow">In the everyday</span><h2>{{ section.settings.instagram_heading }}</h2><a class="jf-link" href="{{ section.settings.instagram_link }}">{{ section.settings.instagram_handle }}</a></div>
+      <div class="jf-instagram__grid">
+        {% for block in instagram_blocks %}
+          <div class="jf-instagram__image" {{ block.shopify_attributes }} data-jf-reveal>{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 900 | image_tag: widths: '300, 600, 900', loading: 'lazy', alt: block.settings.image.alt | default: shop.name }}{% endif %}</div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="jf-newsletter" data-jf-reveal>
+    <span class="jf-eyebrow">Private notes</span><h2>{{ section.settings.newsletter_heading }}</h2><p>{{ section.settings.newsletter_copy }}</p>
+    {% form 'customer', class: 'jf-newsletter__form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <label class="visually-hidden" for="jf-email-{{ section.id }}">Email</label>
+      <input id="jf-email-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" placeholder="Your email address" autocomplete="email" required>
+      <button type="submit">{{ section.settings.newsletter_button }}</button>
+    {% endform %}
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "JF Editorial Home",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Main hero image" },
+    { "type": "image_picker", "id": "hero_background_image", "label": "Hero background image" },
+    { "type": "range", "id": "hero_background_width", "label": "Background image width", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "hero_background_height", "label": "Background image height", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "hero_background_x", "label": "Background image horizontal position", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+    { "type": "range", "id": "hero_background_y", "label": "Background image vertical position", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+    { "type": "header", "content": "Moving image bands" },
+    { "type": "paragraph", "content": "Add up to 20 images here. They repeat seamlessly in the four moving bands around the main image." },
+    { "type": "image_picker", "id": "band_image_1", "label": "Band image 01" },
+    { "type": "image_picker", "id": "band_image_2", "label": "Band image 02" },
+    { "type": "image_picker", "id": "band_image_3", "label": "Band image 03" },
+    { "type": "image_picker", "id": "band_image_4", "label": "Band image 04" },
+    { "type": "image_picker", "id": "band_image_5", "label": "Band image 05" },
+    { "type": "image_picker", "id": "band_image_6", "label": "Band image 06" },
+    { "type": "image_picker", "id": "band_image_7", "label": "Band image 07" },
+    { "type": "image_picker", "id": "band_image_8", "label": "Band image 08" },
+    { "type": "image_picker", "id": "band_image_9", "label": "Band image 09" },
+    { "type": "image_picker", "id": "band_image_10", "label": "Band image 10" },
+    { "type": "image_picker", "id": "band_image_11", "label": "Band image 11" },
+    { "type": "image_picker", "id": "band_image_12", "label": "Band image 12" },
+    { "type": "image_picker", "id": "band_image_13", "label": "Band image 13" },
+    { "type": "image_picker", "id": "band_image_14", "label": "Band image 14" },
+    { "type": "image_picker", "id": "band_image_15", "label": "Band image 15" },
+    { "type": "image_picker", "id": "band_image_16", "label": "Band image 16" },
+    { "type": "image_picker", "id": "band_image_17", "label": "Band image 17" },
+    { "type": "image_picker", "id": "band_image_18", "label": "Band image 18" },
+    { "type": "image_picker", "id": "band_image_19", "label": "Band image 19" },
+    { "type": "image_picker", "id": "band_image_20", "label": "Band image 20" },
+    { "type": "image_picker", "id": "hero_logo_image", "label": "Logo on main image" },
+    { "type": "select", "id": "hero_logo_position", "label": "Logo position", "default": "bottom-right", "options": [ { "value": "top-left", "label": "Top left" }, { "value": "top-right", "label": "Top right" }, { "value": "bottom-left", "label": "Bottom left" }, { "value": "bottom-right", "label": "Bottom right" } ] },
+    { "type": "range", "id": "hero_logo_size", "label": "Logo size", "min": 10, "max": 38, "step": 1, "unit": "vw", "default": 20 },
+    { "type": "range", "id": "hero_scroll_length", "label": "Hero scroll length", "min": 200, "max": 800, "step": 50, "unit": "%", "default": 500 },
+    { "type": "text", "id": "hero_eyebrow", "label": "Hero eyebrow", "default": "JewelleryFunk — est. 2024" },
+    { "type": "textarea", "id": "hero_heading", "label": "Hero heading", "default": "Made to be remembered." },
+    { "type": "textarea", "id": "hero_copy", "label": "Hero copy", "default": "Modern heirlooms, designed to move with you." },
+    { "type": "text", "id": "hero_button", "label": "Hero button", "default": "Explore the collection" },
+    { "type": "url", "id": "hero_link", "label": "Hero link" },
+    { "type": "text", "id": "story_eyebrow", "label": "Story eyebrow", "default": "Our point of view" },
+    { "type": "textarea", "id": "story_heading", "label": "Story heading", "default": "The art of everyday gold." },
+    { "type": "textarea", "id": "story_copy", "label": "Story copy", "default": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal." },
+    { "type": "text", "id": "story_button", "label": "Story button", "default": "Meet JewelleryFunk" },
+    { "type": "url", "id": "story_link", "label": "Story link" },
+    { "type": "url", "id": "collections_link", "label": "All collections link" },
+    { "type": "collection", "id": "featured_collection", "label": "Featured product collection" },
+    { "type": "text", "id": "products_heading", "label": "Products heading", "default": "The new essentials." },
+    { "type": "collection", "id": "best_seller_collection", "label": "Best sellers collection" },
+    { "type": "text", "id": "best_sellers_heading", "label": "Best sellers heading", "default": "Most wanted." },
+    { "type": "image_picker", "id": "editorial_image", "label": "Editorial image" },
+    { "type": "text", "id": "editorial_eyebrow", "label": "Editorial eyebrow", "default": "Designed with intention" },
+    { "type": "textarea", "id": "editorial_heading", "label": "Editorial heading", "default": "A little more you." },
+    { "type": "textarea", "id": "editorial_copy", "label": "Editorial copy", "default": "Pieces with a considered presence: effortless alone, unforgettable together." },
+    { "type": "text", "id": "editorial_button", "label": "Editorial button", "default": "Read our story" },
+    { "type": "url", "id": "editorial_link", "label": "Editorial link" },
+    { "type": "textarea", "id": "instagram_heading", "label": "Instagram heading", "default": "Worn your way." },
+    { "type": "text", "id": "instagram_handle", "label": "Instagram handle", "default": "@jewelleryfunk" },
+    { "type": "url", "id": "instagram_link", "label": "Instagram link" },
+    { "type": "textarea", "id": "newsletter_heading", "label": "Newsletter heading", "default": "A little something, just for you." },
+    { "type": "textarea", "id": "newsletter_copy", "label": "Newsletter copy", "default": "New pieces, private previews and the occasional note from our world." },
+    { "type": "text", "id": "newsletter_button", "label": "Newsletter button", "default": "Subscribe" }
+  ],
+  "blocks": [
+    { "type": "collection", "name": "Collection", "limit": 3, "settings": [ { "type": "collection", "id": "collection", "label": "Collection" }, { "type": "image_picker", "id": "image", "label": "Image override" }, { "type": "text", "id": "heading", "label": "Heading" }, { "type": "text", "id": "caption", "label": "Caption" } ] },
+    { "type": "instagram", "name": "Instagram image", "limit": 4, "settings": [ { "type": "image_picker", "id": "image", "label": "Image" } ] }
+  ],
+  "presets": [{ "name": "JF Editorial Home", "blocks": [{ "type": "collection" }, { "type": "collection" }, { "type": "collection" }, { "type": "instagram" }, { "type": "instagram" }, { "type": "instagram" }, { "type": "instagram" }] }]
+}
+{% endschema %}

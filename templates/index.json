@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "premium_home": {
+      "type": "premium-home",
+      "settings": {
+        "hero_eyebrow": "JewelleryFunk — Modern heirlooms",
+        "hero_heading": "Made to be remembered.",
+        "hero_copy": "Modern heirlooms, designed to move with you.",
+        "hero_button": "Explore the collection",
+        "story_eyebrow": "Our point of view",
+        "story_heading": "The art of everyday gold.",
+        "story_copy": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal.",
+        "story_button": "Meet JewelleryFunk",
+        "products_heading": "The new essentials.",
+        "editorial_eyebrow": "Designed with intention",
+        "editorial_heading": "A little more you.",
+        "editorial_copy": "Pieces with a considered presence: effortless alone, unforgettable together.",
+        "editorial_button": "Read our story",
+        "instagram_heading": "Worn your way.",
+        "instagram_handle": "@jewelleryfunk",
+        "newsletter_heading": "A little something, just for you.",
+        "newsletter_copy": "New pieces, private previews and the occasional note from our world.",
+        "newsletter_button": "Subscribe"
+      },
+      "blocks": {},
+      "block_order": []
+    }
+  },
+  "order": ["premium_home"]
+}

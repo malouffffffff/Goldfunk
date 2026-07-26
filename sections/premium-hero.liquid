@@ -1,0 +1,62 @@
+<section class="jf-hero">
+
+  {% if section.settings.image %}
+    <div class="jf-hero__image">
+      {{ section.settings.image | image_url: width: 2400 | image_tag }}
+    </div>
+  {% endif %}
+
+  <div class="jf-hero__overlay"></div>
+
+  <div class="jf-hero__content">
+
+    <span class="jf-hero__brand">
+      JewelleryFunk
+    </span>
+
+    <h1>
+      Crafted in Gold.<br>
+      Designed to Last.
+    </h1>
+
+    <p>
+      Timeless jewellery created for everyday elegance.
+      Minimal, refined and made to become part of your story.
+    </p>
+
+    <a href="{{ section.settings.button_link }}" class="jf-button">
+      {{ section.settings.button_text }}
+    </a>
+
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "JF Premium Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF Premium Hero"
+    }
+  ]
+}
+{% endschema %}
