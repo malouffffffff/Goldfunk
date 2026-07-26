@@ -1,0 +1,30 @@
+<section class="jf-newsletter color-{{ section.settings.color_scheme }}">
+  <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
+  <h2>{{ section.settings.heading }}</h2>
+  <p>{{ section.settings.copy }}</p>
+
+  {% form 'customer', class: 'jf-newsletter__form' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <label class="visually-hidden" for="jf-email-{{ section.id }}">Email</label>
+    <input id="jf-email-{{ section.id }}" type="email" name="contact[email]" value="{{ form.email }}" placeholder="{{ section.settings.placeholder }}" autocomplete="email" required>
+    <button type="submit">{{ section.settings.button }}</button>
+    {% if form.posted_successfully? %}<p class="jf-newsletter__message" role="status">{{ section.settings.success_message }}</p>{% endif %}
+    {% if form.errors %}<p class="jf-newsletter__message" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>{% endif %}
+  {% endform %}
+</section>
+
+{% schema %}
+{
+  "name": "JF Newsletter",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-3" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Private notes" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "A little something, just for you." },
+    { "type": "textarea", "id": "copy", "label": "Text", "default": "New pieces, private previews and the occasional note from our world." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Your email address" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Subscribe" },
+    { "type": "text", "id": "success_message", "label": "Success message", "default": "Thank you for joining us." }
+  ],
+  "presets": [{ "name": "JF Newsletter" }]
+}
+{% endschema %}

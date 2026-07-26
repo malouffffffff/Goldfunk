@@ -1,0 +1,44 @@
+<section class="jf-instagram color-{{ section.settings.color_scheme }}">
+  <div class="jf-instagram__intro">
+    <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2>{{ section.settings.heading }}</h2>
+    {% if section.settings.instagram_link != blank %}
+      <a class="jf-link" href="{{ section.settings.instagram_link }}">{{ section.settings.handle }}</a>
+    {% else %}
+      <span class="jf-link">{{ section.settings.handle }}</span>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    <div class="jf-instagram__grid">
+      {% for block in section.blocks %}
+        <div class="jf-instagram__image" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 1200 | image_tag: widths: '300, 600, 900, 1200', loading: 'lazy', alt: block.settings.image.alt | default: shop.name }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "JF Instagram feed",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "In the everyday" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Worn your way." },
+    { "type": "text", "id": "handle", "label": "Instagram handle", "default": "@jewelleryfunk" },
+    { "type": "url", "id": "instagram_link", "label": "Instagram link" }
+  ],
+  "blocks": [
+    { "type": "image", "name": "Instagram image", "limit": 8, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" }
+    ] }
+  ],
+  "presets": [{ "name": "JF Instagram feed", "blocks": [{ "type": "image" }, { "type": "image" }, { "type": "image" }, { "type": "image" }] }]
+}
+{% endschema %}

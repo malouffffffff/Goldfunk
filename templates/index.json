@@ -48,24 +48,6 @@
             "caption": ""
           }
         },
-        "instagram_3DEm9t": {
-          "type": "instagram",
-          "settings": {
-            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-25.jpg"
-          }
-        },
-        "instagram_LH38x3": {
-          "type": "instagram",
-          "settings": {
-            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24_2.jpg"
-          }
-        },
-        "instagram_iU4deK": {
-          "type": "instagram",
-          "settings": {
-            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24.jpg"
-          }
-        },
         "collection_mLpV43": {
           "type": "collection",
           "settings": {
@@ -99,9 +81,6 @@
         "collection_kBhtic",
         "collection_rfpnRG",
         "collection_eVd4PN",
-        "instagram_3DEm9t",
-        "instagram_LH38x3",
-        "instagram_iU4deK",
         "collection_mLpV43",
         "collection_pyJN6Y",
         "collection_JU3zY7"
@@ -114,8 +93,6 @@
         "products_color_scheme": "",
         "best_sellers_color_scheme": "scheme-1",
         "editorial_color_scheme": "",
-        "instagram_color_scheme": "scheme-1",
-        "newsletter_color_scheme": "",
         "hero_image": "shopify://shop_images/PHOTO-2026-06-04-11-05-54.jpg",
         "hero_background_width": 100,
         "hero_background_height": 55,
@@ -152,13 +129,7 @@
         "editorial_heading": "A little more you.",
         "editorial_copy": "Pieces with a considered presence: effortless alone, unforgettable together.",
         "editorial_button": "Read our story",
-        "editorial_link": "",
-        "instagram_heading": "Worn your way.",
-        "instagram_handle": "@jewelleryfunk",
-        "instagram_link": "",
-        "newsletter_heading": "A little something, just for you.",
-        "newsletter_copy": "New pieces, private previews and the occasional note from our world.",
-        "newsletter_button": "Subscribe"
+        "editorial_link": ""
       }
     },
     "spotify_playlist": {
@@ -171,10 +142,59 @@
         "heading": "Sound for the moment.",
         "copy": "A playlist for getting ready, going out and every small moment in between."
       }
+    },
+    "instagram_feed": {
+      "type": "instagram-feed",
+      "blocks": {
+        "image_3DEm9t": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-25.jpg"
+          }
+        },
+        "image_LH38x3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24_2.jpg"
+          }
+        },
+        "image_iU4deK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PHOTO-2026-01-25-20-25-24.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_3DEm9t",
+        "image_LH38x3",
+        "image_iU4deK"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "In the everyday",
+        "heading": "Worn your way.",
+        "handle": "@jewelleryfunk",
+        "instagram_link": ""
+      }
+    },
+    "newsletter_signup": {
+      "type": "newsletter-signup",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "eyebrow": "Private notes",
+        "heading": "A little something, just for you.",
+        "copy": "New pieces, private previews and the occasional note from our world.",
+        "placeholder": "Your email address",
+        "button": "Subscribe",
+        "success_message": "Thank you for joining us."
+      }
     }
   },
   "order": [
     "premium_home",
-    "spotify_playlist"
+    "spotify_playlist",
+    "instagram_feed",
+    "newsletter_signup"
   ]
 }
