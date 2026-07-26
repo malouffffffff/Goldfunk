@@ -20,8 +20,8 @@
   endif
 %}
 
-<div class="jf-home" id="jf-home-{{ section.id }}">
-  <section class="jf-hero jf-hero--collage" aria-label="{{ section.settings.hero_heading | strip_html | escape }}" style="--jf-hero-scroll-height: {{ section.settings.hero_scroll_length }}svh;">
+<div class="jf-home color-{{ section.settings.home_color_scheme }}" id="jf-home-{{ section.id }}" style="--jf-home-hero-color: {{ section.settings.hero_color_scheme.settings.background }};">
+  <section class="jf-hero jf-hero--collage color-{{ section.settings.hero_color_scheme }}" aria-label="{{ section.settings.hero_heading | strip_html | escape }}" style="--jf-hero-scroll-height: {{ section.settings.hero_scroll_length }}svh;">
     <div class="jf-hero__sticky">
       {% if section.settings.hero_background_image != blank %}
         <div class="jf-hero__background" style="--jf-bg-width: {{ section.settings.hero_background_width }}%; --jf-bg-height: {{ section.settings.hero_background_height }}%; --jf-bg-x: {{ section.settings.hero_background_x }}%; --jf-bg-y: {{ section.settings.hero_background_y }}%;">
@@ -71,7 +71,7 @@
     </div>
   </section>
 
-  <section class="jf-story">
+  <section class="jf-story color-{{ section.settings.story_color_scheme }}">
     <div data-jf-reveal>
       <span class="jf-eyebrow">{{ section.settings.story_eyebrow }}</span>
       <h2 class="jf-story__statement">{{ section.settings.story_heading }}</h2>
@@ -83,7 +83,7 @@
   </section>
 
   {% if section.blocks.size > 0 %}
-    <section class="jf-collections">
+    <section class="jf-collections color-{{ section.settings.collections_color_scheme }}">
       <div class="jf-section-heading" data-jf-reveal>
         <div><span class="jf-eyebrow">Curated for you</span><h2>Pieces with<br>presence.</h2></div>
         {% if section.settings.collections_link != blank %}<a href="{{ section.settings.collections_link }}" class="jf-link">All collections</a>{% endif %}
@@ -110,7 +110,7 @@
   {% endif %}
 
   {% if featured_collection != blank %}
-    <section class="jf-products">
+    <section class="jf-products color-{{ section.settings.products_color_scheme }}">
       <div class="jf-section-heading" data-jf-reveal>
         <div><span class="jf-eyebrow">Selected pieces</span><h2>{{ section.settings.products_heading }}</h2></div>
         <a href="{{ featured_collection.url }}" class="jf-link">View all</a>
@@ -130,7 +130,7 @@
 
   {% assign best_seller_collection = section.settings.best_seller_collection %}
   {% if best_seller_collection != blank %}
-    <section class="jf-best-sellers">
+    <section class="jf-best-sellers color-{{ section.settings.best_sellers_color_scheme }}">
       <div class="jf-section-heading" data-jf-reveal>
         <div><span class="jf-eyebrow">Most loved</span><h2>{{ section.settings.best_sellers_heading }}</h2></div>
         <a href="{{ best_seller_collection.url }}" class="jf-link">Shop best sellers</a>
@@ -148,7 +148,7 @@
     </section>
   {% endif %}
 
-  <section class="jf-editorial">
+  <section class="jf-editorial color-{{ section.settings.editorial_color_scheme }}">
     <div class="jf-editorial__image" data-jf-reveal>
       {% if section.settings.editorial_image != blank %}{{ section.settings.editorial_image | image_url: width: 1800 | image_tag: widths: '700, 1000, 1400, 1800', loading: 'lazy', alt: section.settings.editorial_heading }}{% endif %}
     </div>
@@ -162,7 +162,7 @@
 
   {% assign instagram_blocks = section.blocks | where: 'type', 'instagram' %}
   {% if instagram_blocks.size > 0 %}
-    <section class="jf-instagram">
+    <section class="jf-instagram color-{{ section.settings.instagram_color_scheme }}">
       <div class="jf-instagram__intro" data-jf-reveal><span class="jf-eyebrow">In the everyday</span><h2>{{ section.settings.instagram_heading }}</h2><a class="jf-link" href="{{ section.settings.instagram_link }}">{{ section.settings.instagram_handle }}</a></div>
       <div class="jf-instagram__grid">
         {% for block in instagram_blocks %}
@@ -172,7 +172,7 @@
     </section>
   {% endif %}
 
-  <section class="jf-newsletter" data-jf-reveal>
+  <section class="jf-newsletter color-{{ section.settings.newsletter_color_scheme }}" data-jf-reveal>
     <span class="jf-eyebrow">Private notes</span><h2>{{ section.settings.newsletter_heading }}</h2><p>{{ section.settings.newsletter_copy }}</p>
     {% form 'customer', class: 'jf-newsletter__form' %}
       <input type="hidden" name="contact[tags]" value="newsletter">
@@ -187,6 +187,16 @@
 {
   "name": "JF Editorial Home",
   "settings": [
+    { "type": "header", "content": "Home color schemes" },
+    { "type": "color_scheme", "id": "home_color_scheme", "label": "Home base color scheme", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "hero_color_scheme", "label": "Hero color scheme", "default": "scheme-4" },
+    { "type": "color_scheme", "id": "story_color_scheme", "label": "Story color scheme", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "collections_color_scheme", "label": "Collections color scheme", "default": "scheme-2" },
+    { "type": "color_scheme", "id": "products_color_scheme", "label": "Products color scheme", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "best_sellers_color_scheme", "label": "Best sellers color scheme", "default": "scheme-3" },
+    { "type": "color_scheme", "id": "editorial_color_scheme", "label": "Editorial color scheme", "default": "scheme-5" },
+    { "type": "color_scheme", "id": "instagram_color_scheme", "label": "Instagram color scheme", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "newsletter_color_scheme", "label": "Newsletter color scheme", "default": "scheme-3" },
     { "type": "image_picker", "id": "hero_image", "label": "Main hero image" },
     { "type": "image_picker", "id": "hero_background_image", "label": "Hero background image" },
     { "type": "range", "id": "hero_background_width", "label": "Background image width", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100 },
