@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "about-jewelleryfunk",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "eyebrow": "JewelleryFunk",
+        "heading": "Objects for the moments that become yours.",
+        "intro": "<p>Write the beginning of your JewelleryFunk story here.</p>",
+        "button_label": "",
+        "button_link": ""
+      }
+    }
+  },
+  "order": ["main"]
+}

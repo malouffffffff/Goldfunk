@@ -1,0 +1,77 @@
+<section class="jf-about color-{{ section.settings.color_scheme }}">
+  <header class="jf-about__hero">
+    <div class="jf-about__hero-copy">
+      <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
+      <h1>{{ section.settings.heading }}</h1>
+      <div class="jf-about__intro rte">{{ section.settings.intro }}</div>
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a class="jf-button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+      {% endif %}
+    </div>
+    <div class="jf-about__hero-image">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 2200 | image_tag: widths: '700, 1000, 1500, 2200', loading: 'eager', alt: section.settings.image.alt | default: section.settings.heading }}
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </header>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'story' %}
+        <article class="jf-about__story" {{ block.shopify_attributes }}>
+          <span class="jf-eyebrow">{{ block.settings.eyebrow }}</span>
+          <h2>{{ block.settings.heading }}</h2>
+          <div class="jf-about__body rte">{{ block.settings.text }}</div>
+        </article>
+      {% when 'image' %}
+        <figure class="jf-about__image" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 2200 | image_tag: widths: '700, 1000, 1500, 2200', loading: 'lazy', alt: block.settings.image.alt | default: shop.name }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          {% if block.settings.caption != blank %}<figcaption>{{ block.settings.caption }}</figcaption>{% endif %}
+        </figure>
+    {% endcase %}
+  {% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "JF About us",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "JewelleryFunk" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Objects for the moments that become yours." },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Write the beginning of your JewelleryFunk story here.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [
+    {
+      "type": "story",
+      "name": "Story text",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our point of view" },
+        { "type": "textarea", "id": "heading", "label": "Heading", "default": "Made for expression." },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Use this space for your story, your process, your materials or the people behind JewelleryFunk.</p>" }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Full-width image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "JF About us",
+    "blocks": [{ "type": "story" }, { "type": "image" }, { "type": "story" }]
+  }]
+}
+{% endschema %}
