@@ -1,0 +1,45 @@
+{% liquid
+  assign spotify_embed_url = section.settings.playlist_url | replace: 'open.spotify.com/playlist', 'open.spotify.com/embed/playlist'
+%}
+
+<section class="jf-spotify color-{{ section.settings.color_scheme }}" id="spotify-playlist-{{ section.id }}">
+  <div class="jf-spotify__art" data-jf-reveal>
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '500, 800, 1200', loading: 'lazy', alt: section.settings.heading }}
+    {% else %}
+      <div class="jf-spotify__art-placeholder"></div>
+    {% endif %}
+  </div>
+
+  <div class="jf-spotify__content" data-jf-reveal>
+    <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2>{{ section.settings.heading }}</h2>
+    {% if section.settings.copy != blank %}<p>{{ section.settings.copy }}</p>{% endif %}
+
+    {% if section.settings.playlist_url != blank %}
+      <iframe
+        class="jf-spotify__player"
+        src="{{ spotify_embed_url }}"
+        title="{{ section.settings.heading | escape }}"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
+      <a class="jf-link" href="{{ section.settings.playlist_url }}" target="_blank" rel="noopener">Open on Spotify</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Spotify playlist",
+  "settings": [
+    { "type": "url", "id": "playlist_url", "label": "Spotify playlist URL" },
+    { "type": "image_picker", "id": "image", "label": "Playlist image" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-5" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The JewelleryFunk sound" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Sound for the moment." },
+    { "type": "textarea", "id": "copy", "label": "Text", "default": "A playlist for getting ready, going out and every small moment in between." }
+  ],
+  "presets": [{ "name": "Spotify playlist" }]
+}
+{% endschema %}

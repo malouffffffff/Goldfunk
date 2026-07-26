@@ -160,9 +160,19 @@
         "newsletter_copy": "New pieces, private previews and the occasional note from our world.",
         "newsletter_button": "Subscribe"
       }
+    },
+    "spotify_playlist": {
+      "type": "spotify-playlist",
+      "settings": {
+        "color_scheme": "scheme-5",
+        "eyebrow": "The JewelleryFunk sound",
+        "heading": "Sound for the moment.",
+        "copy": "A playlist for getting ready, going out and every small moment in between."
+      }
     }
   },
   "order": [
-    "premium_home"
+    "premium_home",
+    "spotify_playlist"
   ]
 }
