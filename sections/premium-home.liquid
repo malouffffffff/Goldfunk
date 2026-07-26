@@ -148,18 +148,6 @@
     </section>
   {% endif %}
 
-  <section class="jf-editorial color-{{ section.settings.editorial_color_scheme }}">
-    <div class="jf-editorial__image" data-jf-reveal>
-      {% if section.settings.editorial_image != blank %}{{ section.settings.editorial_image | image_url: width: 1800 | image_tag: widths: '700, 1000, 1400, 1800', loading: 'lazy', alt: section.settings.editorial_heading }}{% endif %}
-    </div>
-    <div class="jf-editorial__copy" data-jf-reveal>
-      <span class="jf-eyebrow">{{ section.settings.editorial_eyebrow }}</span>
-      <h2>{{ section.settings.editorial_heading }}</h2>
-      <p>{{ section.settings.editorial_copy }}</p>
-      {% if section.settings.editorial_link != blank %}<a href="{{ section.settings.editorial_link }}" class="jf-button">{{ section.settings.editorial_button }}</a>{% endif %}
-    </div>
-  </section>
-
 </div>
 
 {% schema %}
@@ -173,7 +161,6 @@
     { "type": "color_scheme", "id": "collections_color_scheme", "label": "Collections color scheme", "default": "scheme-2" },
     { "type": "color_scheme", "id": "products_color_scheme", "label": "Products color scheme", "default": "scheme-1" },
     { "type": "color_scheme", "id": "best_sellers_color_scheme", "label": "Best sellers color scheme", "default": "scheme-3" },
-    { "type": "color_scheme", "id": "editorial_color_scheme", "label": "Editorial color scheme", "default": "scheme-5" },
     { "type": "image_picker", "id": "hero_image", "label": "Main hero image" },
     { "type": "image_picker", "id": "hero_background_image", "label": "Hero background image" },
     { "type": "range", "id": "hero_background_width", "label": "Background image width", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100 },
@@ -220,13 +207,7 @@
     { "type": "collection", "id": "featured_collection", "label": "Featured product collection" },
     { "type": "text", "id": "products_heading", "label": "Products heading", "default": "The new essentials." },
     { "type": "collection", "id": "best_seller_collection", "label": "Best sellers collection" },
-    { "type": "text", "id": "best_sellers_heading", "label": "Best sellers heading", "default": "Most wanted." },
-    { "type": "image_picker", "id": "editorial_image", "label": "Editorial image" },
-    { "type": "text", "id": "editorial_eyebrow", "label": "Editorial eyebrow", "default": "Designed with intention" },
-    { "type": "textarea", "id": "editorial_heading", "label": "Editorial heading", "default": "A little more you." },
-    { "type": "textarea", "id": "editorial_copy", "label": "Editorial copy", "default": "Pieces with a considered presence: effortless alone, unforgettable together." },
-    { "type": "text", "id": "editorial_button", "label": "Editorial button", "default": "Read our story" },
-    { "type": "url", "id": "editorial_link", "label": "Editorial link" }
+    { "type": "text", "id": "best_sellers_heading", "label": "Best sellers heading", "default": "Most wanted." }
   ],
   "blocks": [
     { "type": "collection", "name": "Collection", "limit": 8, "settings": [ { "type": "collection", "id": "collection", "label": "Collection" }, { "type": "image_picker", "id": "image", "label": "Image override" }, { "type": "text", "id": "heading", "label": "Heading" }, { "type": "text", "id": "caption", "label": "Caption" } ] }
