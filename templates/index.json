@@ -173,6 +173,34 @@
         "instagram_link": "https://www.instagram.com/jewelleryfunk/"
       }
     },
+    "visit_us_BQCYMJ": {
+      "type": "visit-us",
+      "blocks": {
+        "location_YJB9EK": {
+          "type": "location",
+          "settings": {
+            "city": "Hamburg",
+            "name": "Kaufrau-sch",
+            "address": "<p>Isestraße 74, 20149 Eimsbüttel</p>",
+            "image": "shopify://shop_images/IMG_1760.jpg",
+            "map_embed_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4848.159006879797!2d9.985810199999998!3d53.5833577!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b188cb00d8658b%3A0x573f88fbd037546d!2sKaufrausch%20Hamburg!5e1!3m2!1sde!2sde!4v1785159415165!5m2!1sde!2sde\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>",
+            "map_embed_url": "",
+            "maps_link": "https://www.google.com/maps/place/Kaufrausch+Hamburg/@53.5833577,9.9858102,1113m/data=!3m1!1e3!4m6!3m5!1s0x47b188cb00d8658b:0x573f88fbd037546d!8m2!3d53.5833577!4d9.9858102!16s%2Fg%2F1hc2_8qwn?entry=ttu&g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D",
+            "maps_label": "Open in Maps"
+          }
+        }
+      },
+      "block_order": [
+        "location_YJB9EK"
+      ],
+      "name": "JF Visit us",
+      "settings": {
+        "color_scheme": "",
+        "eyebrow": "In person",
+        "heading": "Find us in store",
+        "copy": "<p>Come by, try on your favourites and discover Goldfunk in person.</p>"
+      }
+    },
     "newsletter_signup": {
       "type": "newsletter-signup",
       "settings": {
@@ -190,6 +218,7 @@
     "premium_home",
     "spotify_playlist",
     "instagram_feed",
+    "visit_us_BQCYMJ",
     "newsletter_signup"
   ]
 }
