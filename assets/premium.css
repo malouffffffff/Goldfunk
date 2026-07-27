@@ -12,9 +12,9 @@
   --jf-ease: cubic-bezier(.22, .61, .36, 1);
 }
 
-html, body { max-width: 100%; overflow-x: hidden; }
+html, body { max-width: 100%; overflow-x: clip; }
 body { background: var(--jf-paper); color: var(--jf-ink); font-family: var(--jf-sans); }
-.jf-home { overflow: clip; background: var(--color-background); }
+.jf-home { background: var(--color-background); overflow: visible; }
 .jf-home h1, .jf-home h2, .jf-home h3 { font-family: var(--jf-serif); font-weight: 400; letter-spacing: -.035em; }
 .jf-home * { box-sizing: border-box; }
 .jf-eyebrow { display: block; color: var(--color-primary); font-size: .66rem; font-weight: 500; letter-spacing: .22em; line-height: 1.4; text-transform: uppercase; }
