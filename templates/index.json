@@ -70,7 +70,7 @@
           "type": "collection",
           "settings": {
             "collection": "samt",
-            "image": "shopify://shop_images/ed53fe42-0bdc-4c28-b53b-7a80c8d2111e.jpg",
+            "image": "shopify://shop_images/IMG_7367.heic",
             "heading": "",
             "caption": ""
           }
@@ -108,14 +108,14 @@
         "hero_logo_position": "bottom-right",
         "hero_logo_size": 20,
         "hero_scroll_length": 500,
-        "hero_eyebrow": "JewelleryFunk — Modern heirlooms",
-        "hero_heading": "Made to be remembered.",
-        "hero_copy": "Modern heirlooms, designed to move with you.",
+        "hero_eyebrow": "JewelleryFunk",
+        "hero_heading": "your daily dose of gold",
+        "hero_copy": "designed to move with you.",
         "hero_button": "Explore the collection",
         "hero_link": "",
         "story_eyebrow": "Our point of view",
-        "story_heading": "The art of everyday gold.",
-        "story_copy": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal.",
+        "story_heading": "Handmade with character",
+        "story_copy": "Each piece is crafted by hand carefully & consciously. \nEvery detail is chosen with curiosity & care. Each colour & texture is for the small surprises it brings to life.",
         "story_button": "Meet JewelleryFunk",
         "story_link": "",
         "collections_link": "",
@@ -170,7 +170,7 @@
         "eyebrow": "In the everyday",
         "heading": "Worn your way.",
         "handle": "@jewelleryfunk",
-        "instagram_link": ""
+        "instagram_link": "https://www.instagram.com/jewelleryfunk/"
       }
     },
     "newsletter_signup": {
@@ -178,7 +178,7 @@
       "settings": {
         "color_scheme": "scheme-3",
         "eyebrow": "Private notes",
-        "heading": "be part of the club",
+        "heading": "Be part of the Goldfunk-club!",
         "copy": "New pieces, private previews and the occasional note from our world.",
         "placeholder": "Your email address",
         "button": "Subscribe",
