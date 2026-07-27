@@ -1,0 +1,106 @@
+<section class="jf-visit-us color-{{ section.settings.color_scheme }}">
+  <div class="jf-visit-us__heading">
+    <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span>
+    <h2>{{ section.settings.heading }}</h2>
+    {% if section.settings.copy != blank %}<div class="jf-visit-us__copy rte">{{ section.settings.copy }}</div>{% endif %}
+  </div>
+
+  <div class="jf-visit-us__locations">
+    {% for block in section.blocks %}
+      {% liquid
+        assign map_source = block.settings.map_embed_code | default: block.settings.map_embed_url
+        if map_source contains '<iframe'
+          assign map_source = map_source | split: 'src="' | last | split: '"' | first
+        endif
+      %}
+      <article class="jf-visit-us__location" {{ block.shopify_attributes }}>
+        <div class="jf-visit-us__image">
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 1400 | image_tag: widths: '500, 800, 1100, 1400', loading: 'lazy', alt: block.settings.name }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+
+        <div class="jf-visit-us__details">
+          <span class="jf-eyebrow">{{ block.settings.city }}</span>
+          <h3>{{ block.settings.name }}</h3>
+          {% if block.settings.address != blank %}<div class="jf-visit-us__address rte">{{ block.settings.address }}</div>{% endif %}
+          {% if block.settings.maps_link != blank %}
+            <a class="jf-link" href="{{ block.settings.maps_link }}" target="_blank" rel="noopener">{{ block.settings.maps_label }}</a>
+          {% endif %}
+        </div>
+
+        {% if map_source != blank %}
+          <div class="jf-visit-us__map">
+            <iframe
+              src="{{ map_source }}"
+              title="{{ block.settings.name | escape }} map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .jf-visit-us { background: var(--color-background); color: var(--color-foreground); padding: clamp(6rem, 13vw, 12rem) max(1.5rem, 6vw); }
+  .jf-visit-us__heading { margin: 0 auto clamp(3rem, 7vw, 7rem); max-width: 65rem; text-align: center; }
+  .jf-visit-us__heading h2, .jf-visit-us__location h3 { font-family: "Iowan Old Style", "Baskerville", Georgia, serif; font-weight: 400; letter-spacing: -.045em; line-height: .9; }
+  .jf-visit-us__heading h2 { font-size: clamp(3.4rem, 7vw, 8rem); margin: .75rem auto 1.25rem; }
+  .jf-visit-us__copy { line-height: 1.75; margin: auto; max-width: 35rem; }
+  .jf-visit-us__locations { display: grid; gap: clamp(2rem, 5vw, 5rem); grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 100rem; }
+  .jf-visit-us__location { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(13rem, .9fr); grid-template-rows: auto auto; overflow: hidden; }
+  .jf-visit-us__image { aspect-ratio: .86; background: var(--color-primary); grid-row: span 2; overflow: hidden; }
+  .jf-visit-us__image img, .jf-visit-us__image svg { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .jf-visit-us__details { align-content: center; display: grid; justify-items: start; min-inline-size: 0; padding: clamp(1.5rem, 3vw, 3.5rem); }
+  .jf-visit-us__details h3 { font-size: clamp(2rem, 3.5vw, 4rem); margin: .65rem 0 1rem; max-inline-size: 100%; overflow-wrap: anywhere; }
+  .jf-visit-us__address { line-height: 1.65; margin-bottom: 1.35rem; max-inline-size: 100%; overflow-wrap: anywhere; }
+  .jf-visit-us__map { background: var(--color-foreground); min-height: 11rem; }
+  .jf-visit-us__map iframe { border: 0; display: block; height: 100%; min-height: 11rem; width: 100%; }
+  .jf-visit-us .jf-link { font-size: .61rem; }
+  @media screen and (max-width: 989px) { .jf-visit-us__locations { grid-template-columns: 1fr; max-width: 48rem; } }
+  @media screen and (max-width: 749px) { .jf-visit-us__location { grid-template-columns: 1fr; } .jf-visit-us__image { aspect-ratio: 1.08; grid-row: auto; } .jf-visit-us__details { min-height: 15rem; } .jf-visit-us__details h3 { font-size: clamp(2.2rem, 8.5vw, 3.25rem); } .jf-visit-us__map, .jf-visit-us__map iframe { min-height: 13rem; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "JF Visit us",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "In person" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Visit us." },
+    { "type": "richtext", "id": "copy", "label": "Intro text", "default": "<p>Come by, try on your favourites and discover JewelleryFunk in person.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "location",
+      "name": "Store location",
+      "limit": 3,
+      "settings": [
+        { "type": "text", "id": "city", "label": "City", "default": "Berlin" },
+        { "type": "text", "id": "name", "label": "Store name", "default": "JewelleryFunk" },
+        { "type": "richtext", "id": "address", "label": "Address and opening hours", "default": "<p>Add your address and opening hours here.</p>" },
+        { "type": "image_picker", "id": "image", "label": "Location image" },
+        { "type": "textarea", "id": "map_embed_code", "label": "Google Maps embed code", "info": "Paste the complete iframe code from Google Maps here." },
+        { "type": "url", "id": "map_embed_url", "label": "Google Maps embed URL (optional)" },
+        { "type": "url", "id": "maps_link", "label": "Google Maps or Apple Maps link" },
+        { "type": "text", "id": "maps_label", "label": "Map button label", "default": "Open in Maps" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF Visit us",
+      "blocks": [
+        { "type": "location", "settings": { "city": "Berlin", "name": "JewelleryFunk Berlin" } },
+        { "type": "location", "settings": { "city": "Hamburg", "name": "JewelleryFunk Hamburg" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
