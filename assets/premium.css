@@ -68,8 +68,8 @@ body:has(.jf-home).jf-header-scrolled #header-group .announcement-bar { color: v
 .jf-hero__logo-mark--top-right { right: clamp(.8rem, 1.5vw, 1.5rem); top: clamp(.8rem, 1.5vw, 1.5rem); }
 .jf-hero__logo-mark--bottom-left { bottom: clamp(.8rem, 1.5vw, 1.5rem); left: clamp(.8rem, 1.5vw, 1.5rem); }
 .jf-hero__logo-mark--bottom-right { bottom: clamp(.8rem, 1.5vw, 1.5rem); right: clamp(.8rem, 1.5vw, 1.5rem); }
-.jf-hero__card--main { --jf-hero-card-scale: 1.045; --jf-hero-card-shift: 0px; aspect-ratio: .79; box-shadow: 0 20px 65px rgba(35,25,17,.22); height: min(74svh, 57rem); left: 50%; top: 50%; transform: translate3d(-50%, calc(-50% + var(--jf-hero-card-shift)), 0) rotate(-2deg) scale(var(--jf-hero-card-scale)); width: auto; will-change: transform; z-index: 3; }
-.jf-hero__inner { --jf-hero-copy-shift: 0px; align-items: center; display: flex; flex-direction: column; inset: 0; justify-content: center; padding: 6rem 1.5rem 4rem; pointer-events: none; position: absolute; text-align: center; transform: translate3d(0, var(--jf-hero-copy-shift), 0); will-change: transform; z-index: 4; }
+.jf-hero__card--main { aspect-ratio: .79; box-shadow: 0 20px 65px rgba(35,25,17,.22); height: min(74svh, 57rem); left: 50%; top: 50%; transform: translate3d(-50%, -50%, 0) rotate(-2deg); width: auto; z-index: 3; }
+.jf-hero__inner { align-items: center; display: flex; flex-direction: column; inset: 0; justify-content: center; padding: 6rem 1.5rem 4rem; pointer-events: none; position: absolute; text-align: center; z-index: 4; }
 .jf-hero__inner .jf-button { pointer-events: auto; }
 .jf-hero .jf-eyebrow { color: var(--color-primary); margin-bottom: 1.35rem; text-shadow: 0 1px 16px rgba(20,14,10,.28); }
 .jf-hero h1 { font-size: clamp(3.5rem, 8vw, 8.6rem); font-style: italic; line-height: .85; margin: 0; max-width: 9ch; text-shadow: 0 2px 30px rgba(20,14,10,.26); }

@@ -28,8 +28,6 @@
     } else reveals.forEach((element) => element.classList.add('is-visible'));
 
     const bands = [...home.querySelectorAll('[data-jf-hero-band]')];
-    const mainCard = hero?.querySelector('.jf-hero__card--main');
-    const heroCopy = hero?.querySelector('.jf-hero__inner');
     let heroAnimationFrame;
     const moveHero = () => {
       if (!hero) return;
@@ -41,10 +39,6 @@
         const offset = (progress - .5) * speeds[index] * directions[index];
         band.style.setProperty('--jf-band-shift', `${offset}vw`);
       });
-      // The large foreground image moves very gently with the scroll.
-      mainCard?.style.setProperty('--jf-hero-card-shift', `${progress * -54}px`);
-      mainCard?.style.setProperty('--jf-hero-card-scale', `${1.045 - (progress * .045)}`);
-      heroCopy?.style.setProperty('--jf-hero-copy-shift', `${progress * -34}px`);
     };
     const queueHeroMotion = () => {
       if (heroAnimationFrame) return;
