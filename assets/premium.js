@@ -1,5 +1,4 @@
 (() => {
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let headerListenerAdded = false;
 
   const setupHome = (home) => {
@@ -29,6 +28,7 @@
     } else reveals.forEach((element) => element.classList.add('is-visible'));
 
     const bands = [...home.querySelectorAll('[data-jf-hero-band]')];
+    let heroAnimationFrame;
     const moveHero = () => {
       if (!hero) return;
       const availableScroll = Math.max(1, hero.offsetHeight - window.innerHeight);
@@ -40,9 +40,19 @@
         band.style.setProperty('--jf-band-shift', `${offset}vw`);
       });
     };
+    const queueHeroMotion = () => {
+      if (heroAnimationFrame) return;
+      heroAnimationFrame = window.requestAnimationFrame(() => {
+        moveHero();
+        heroAnimationFrame = undefined;
+      });
+    };
 
     moveHero();
-    if (!reducedMotion) window.addEventListener('scroll', moveHero, { passive: true });
+    // The image bands always react to scrolling, including on iPhone.
+    window.addEventListener('scroll', queueHeroMotion, { passive: true });
+    window.addEventListener('resize', queueHeroMotion, { passive: true });
+    window.addEventListener('orientationchange', queueHeroMotion, { passive: true });
   };
 
   document.querySelectorAll('.jf-home').forEach(setupHome);
