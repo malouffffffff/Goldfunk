@@ -19,12 +19,13 @@
       </defs>
       <rect width="100%" height="100%" mask="url(#spotify-cutout-{{ section.id }})" fill="currentColor"></rect>
     </svg>
+    {% comment %} SMARTPHONE ONLY: kürzere und nach links verschobene Schrift im Bild. {% endcomment %}
     <svg class="jf-spotify__cutout jf-spotify__cutout--mobile" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <mask id="spotify-cutout-mobile-{{ section.id }}">
           <rect width="100%" height="100%" fill="white"></rect>
-          <text x="40" y="465" textLength="720" lengthAdjust="spacingAndGlyphs" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_one | escape }}</text>
-          <text x="40" y="715" textLength="720" lengthAdjust="spacingAndGlyphs" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_two | escape }}</text>
+          <text x="175" y="465" textLength="650" lengthAdjust="spacingAndGlyphs" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_one | escape }}</text>
+          <text x="175" y="715" textLength="650" lengthAdjust="spacingAndGlyphs" fill="black" class="jf-spotify__cutout-text">{{ section.settings.cutout_line_two | escape }}</text>
         </mask>
       </defs>
       <rect width="100%" height="100%" mask="url(#spotify-cutout-mobile-{{ section.id }})" fill="currentColor"></rect>
@@ -72,6 +73,7 @@
   .jf-spotify__art img { display: block; height: 100%; object-fit: cover; width: 100%; }
   .jf-spotify__art-placeholder { background: radial-gradient(circle at 40% 40%, var(--color-foreground), transparent 32%); height: 100%; opacity: .2; }
   .jf-spotify__cutout { color: var(--color-background); height: 100%; inset: 0; position: absolute; width: 100%; }
+  /* SMARTPHONE ONLY: Mobile-Schrift wird auf Desktop ausgeblendet. */
   .jf-spotify__cutout--mobile { display: none; }
   .jf-spotify__cutout-text { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 240px; font-weight: 500; letter-spacing: -14px; }
   .jf-spotify__content { align-content: center; color: var(--color-foreground); display: grid; justify-items: start; opacity: 1 !important; padding: clamp(3rem, 8vw, 8rem); visibility: visible !important; }
@@ -79,9 +81,14 @@
   .jf-spotify__content p { color: var(--color-foreground); line-height: 1.8; margin: 0 0 2rem; max-width: 29rem; }
   .jf-spotify__player { border: 0; display: block; height: 152px; margin-bottom: 1.75rem; max-width: 38rem; width: 100%; }
 
+  /* SMARTPHONE ONLY: Diese Regeln gelten bis maximal 749 px Bildschirmbreite. */
   @media screen and (max-width: 749px) {
-    .jf-spotify { grid-template-columns: 1fr; }
+    .jf-spotify { grid-template-columns: minmax(0, 1fr); inline-size: 100%; max-inline-size: 100%; overflow: hidden; }
+    .jf-spotify__art, .jf-spotify__content { max-inline-size: 100%; min-inline-size: 0; }
     .jf-spotify__art { min-height: 28rem; }
+    .jf-spotify__cutout { max-inline-size: 100%; overflow: hidden; }
+    .jf-spotify__cutout--mobile .jf-spotify__cutout-text { font-weight: 700; letter-spacing: -8px; }
+    /* Smartphone zeigt die kurze Schrift; Desktop zeigt die große Desktop-Version. */
     .jf-spotify__cutout--desktop { display: none; }
     .jf-spotify__cutout--mobile { display: block; }
   }

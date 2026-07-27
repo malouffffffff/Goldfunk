@@ -12,6 +12,7 @@
   --jf-ease: cubic-bezier(.22, .61, .36, 1);
 }
 
+html, body { max-width: 100%; overflow-x: hidden; }
 body { background: var(--jf-paper); color: var(--jf-ink); font-family: var(--jf-sans); }
 .jf-home { overflow: clip; background: var(--color-background); }
 .jf-home h1, .jf-home h2, .jf-home h3 { font-family: var(--jf-serif); font-weight: 400; letter-spacing: -.035em; }
@@ -124,7 +125,7 @@ product-card:hover .product-card__content { border-bottom-color: var(--jf-gold);
 .jf-editorial h2 { font-size: clamp(3rem, 5.3vw, 6rem); line-height: .9; margin: 1rem 0 1.8rem; max-width: 7ch; }
 .jf-editorial p { line-height: 1.8; max-width: 26rem; margin-bottom: 2.5rem; }
 
-.jf-spotify { align-items: stretch; background: var(--color-background); display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); }
+.jf-spotify { align-items: stretch; background: var(--color-background); display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); inline-size: 100%; max-inline-size: 100%; min-inline-size: 0; overflow: hidden; }
 .jf-spotify__art { aspect-ratio: 1; background: var(--color-primary); min-height: 30rem; overflow: hidden; }
 .jf-spotify__art img { height: 100%; object-fit: cover; width: 100%; }
 .jf-spotify__art-placeholder { height: 100%; opacity: .2; background: radial-gradient(circle at 40% 40%, var(--color-foreground), transparent 32%); }
@@ -168,4 +169,5 @@ product-card:hover .product-card__content { border-bottom-color: var(--jf-gold);
 [data-jf-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--jf-ease), transform .9s var(--jf-ease); }
 [data-jf-reveal].is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } [data-jf-reveal] { opacity: 1; transform: none; } }
+/* SMARTPHONE ONLY (max. 749 px): enthält auch die allgemeinen Spotify-Regeln für einspaltiges Layout und Bildhöhe. */
 @media (max-width: 749px) { body:has(.jf-home) #header-group { position: absolute; } .jf-hero { height: min(var(--jf-hero-scroll-height, 500svh), 500svh); } .jf-hero__card--main { height: min(66svh, 37rem); } .jf-hero__band { height: clamp(4.5rem, 18vw, 7rem); width: 185vw; } .jf-hero__band-image { width: clamp(4.5rem, 18vw, 7rem); } .jf-hero h1 { font-size: clamp(3.1rem, 15vw, 5.4rem); } .jf-story, .jf-editorial, .jf-spotify, .jf-about__hero { grid-template-columns: 1fr; } .jf-story { gap: 1rem; } .jf-collection-grid { gap: 1rem; grid-auto-columns: minmax(15rem, 78vw); padding-inline: 1.5rem; } .jf-collection-card:nth-child(even) { margin-top: 2.25rem; } .jf-product-grid, .jf-best-sellers__grid { grid-template-columns: repeat(2, 1fr); } .jf-product-grid .jf-product:nth-child(n+5) { display: none; } .jf-best-sellers .jf-product:first-child { grid-column: span 2; grid-row: auto; } .jf-editorial { min-height: auto; } .jf-editorial__image, .jf-spotify__art { min-height: 28rem; } .jf-about__hero-copy { padding-top: 8rem; } .jf-about__hero-image { min-height: 27rem; } .jf-about__image img { aspect-ratio: .85; } .jf-instagram__grid { gap: .45rem; grid-template-columns: repeat(2, 1fr); } .jf-section-heading { align-items: start; flex-direction: column; gap: 1.5rem; } }
