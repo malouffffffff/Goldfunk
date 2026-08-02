@@ -176,6 +176,19 @@
     "visit_us_BQCYMJ": {
       "type": "visit-us",
       "blocks": {
+        "location_X8V4Y6": {
+          "type": "location",
+          "settings": {
+            "city": "München",
+            "name": "Tanja Kobek",
+            "address": "<p>Wilhelm-Keim-Straße 1, 82031 Grünwald</p>",
+            "image": "shopify://shop_images/IMG_1761_2.jpg",
+            "map_embed_code": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3414.326323827687!2d11.52395375924012!3d48.04169842612575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddd20a78b3011%3A0xb183952b7f861332!2sTanja%20Kobek%20-%20Wear%20it%20-%20Love%20it!5e1!3m2!1sde!2sde!4v1785665403976!5m2!1sde!2sde\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe>",
+            "map_embed_url": "",
+            "maps_link": "https://www.google.com/maps/place/Tanja+Kobek+-+Wear+it+-+Love+it/@48.0416984,11.5239538,784m/data=!3m1!1e3!4m15!1m8!3m7!1s0x479ddd20a78b3011:0xb183952b7f861332!2sTanja+Kobek+-+Wear+it+-+Love+it!8m2!3d48.0417427!4d11.524174!10e5!16s%2Fg%2F11kkpzc8xj!3m5!1s0x479ddd20a78b3011:0xb183952b7f861332!8m2!3d48.0417427!4d11.524174!16s%2Fg%2F11kkpzc8xj?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D",
+            "maps_label": "Open in Maps"
+          }
+        },
         "location_YJB9EK": {
           "type": "location",
           "settings": {
@@ -191,6 +204,7 @@
         }
       },
       "block_order": [
+        "location_X8V4Y6",
         "location_YJB9EK"
       ],
       "name": "JF Visit us",
