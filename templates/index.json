@@ -12,6 +12,15 @@
     "premium_home": {
       "type": "premium-home",
       "blocks": {
+        "collection_riQWkk": {
+          "type": "collection",
+          "settings": {
+            "collection": "bracelet",
+            "image": "shopify://shop_images/8281E589-B764-4A96-A0DA-BAC21AE3BBB7.jpg",
+            "heading": "",
+            "caption": ""
+          }
+        },
         "collection_mFKT7b": {
           "type": "collection",
           "settings": {
@@ -77,6 +86,7 @@
         }
       },
       "block_order": [
+        "collection_riQWkk",
         "collection_mFKT7b",
         "collection_kBhtic",
         "collection_rfpnRG",
@@ -144,19 +154,19 @@
         "image_3DEm9t": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/b5e5bddb-a7cf-4761-9cfb-88fbbdbc6962.jpg"
+            "image": "shopify://shop_images/8281E589-B764-4A96-A0DA-BAC21AE3BBB7.jpg"
           }
         },
         "image_LH38x3": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/a679f458-3060-4365-bd11-25060e229d35.jpg"
+            "image": "shopify://shop_images/5586EDCA-ECF2-4DA2-A9DE-1DEBFC8916EC.jpg"
           }
         },
         "image_iU4deK": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/c86f7c2c-4bd7-4a50-945b-89e136b64720_2.jpg"
+            "image": "shopify://shop_images/3FE35B94-AEFD-405B-8771-DAC438622E7A.jpg"
           }
         }
       },
