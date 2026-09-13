@@ -6,7 +6,7 @@
     home.dataset.jfReady = 'true';
 
     const hero = home.querySelector('.jf-hero');
-    const collections = home.querySelector('.jf-collections, .jf-products');
+    const collections = home.querySelector('.jf-spotlight, .jf-collections, .jf-products');
 
     if (!headerListenerAdded) {
       const headerState = () => {
