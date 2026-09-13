@@ -1,5 +1,7 @@
 {% liquid
   assign featured_collection = section.settings.featured_collection
+  assign spotlight_collection = section.settings.spotlight_collection
+  assign spotlight_image = section.settings.spotlight_image | default: spotlight_collection.featured_image
   assign hero_image = section.settings.hero_image
   assign band_image_count = 0
   for image_index in (1..20)
@@ -82,6 +84,41 @@
     </div>
   </section>
 
+  {% if spotlight_collection != blank %}
+    <section class="jf-spotlight color-{{ section.settings.spotlight_color_scheme }}" aria-labelledby="jf-spotlight-title-{{ section.id }}">
+      <div class="jf-spotlight__frame" data-jf-reveal>
+        <a class="jf-spotlight__visual" href="{{ spotlight_collection.url }}" aria-label="{{ section.settings.spotlight_heading | default: spotlight_collection.title | escape }}">
+          {% if spotlight_image != blank %}
+            {{ spotlight_image | image_url: width: 2400 | image_tag: widths: '750, 1100, 1600, 2000, 2400', loading: 'lazy', alt: section.settings.spotlight_heading | default: spotlight_collection.title }}
+          {% else %}
+            {{ 'collection-1' | placeholder_svg_tag: 'jf-spotlight__placeholder' }}
+          {% endif %}
+          <span class="jf-spotlight__number" aria-hidden="true">01</span>
+        </a>
+
+        <div class="jf-spotlight__content">
+          <span class="jf-eyebrow">{{ section.settings.spotlight_eyebrow }}</span>
+          <h2 id="jf-spotlight-title-{{ section.id }}">{{ section.settings.spotlight_heading | default: spotlight_collection.title }}</h2>
+          {% if section.settings.spotlight_copy != blank %}<p>{{ section.settings.spotlight_copy }}</p>{% endif %}
+          <a class="jf-spotlight__button" href="{{ spotlight_collection.url }}">
+            <span>{{ section.settings.spotlight_button }}</span>
+            <span class="jf-spotlight__arrow" aria-hidden="true">&#8599;</span>
+          </a>
+        </div>
+
+        {% if section.settings.spotlight_detail_image != blank %}
+          <div class="jf-spotlight__detail" aria-hidden="true">
+            {{ section.settings.spotlight_detail_image | image_url: width: 900 | image_tag: widths: '320, 500, 700, 900', loading: 'lazy', alt: '' }}
+          </div>
+        {% endif %}
+      </div>
+      <p class="jf-spotlight__marquee" aria-hidden="true">
+        <span>{{ section.settings.spotlight_heading | default: spotlight_collection.title }}</span>
+        <span>{{ section.settings.spotlight_heading | default: spotlight_collection.title }}</span>
+      </p>
+    </section>
+  {% endif %}
+
   {% if section.blocks.size > 0 %}
     <section class="jf-collections color-{{ section.settings.collections_color_scheme }}">
       <div class="jf-section-heading" data-jf-reveal>
@@ -158,6 +195,7 @@
     { "type": "color_scheme", "id": "home_color_scheme", "label": "Home base color scheme", "default": "scheme-1" },
     { "type": "color_scheme", "id": "hero_color_scheme", "label": "Hero color scheme", "default": "scheme-4" },
     { "type": "color_scheme", "id": "story_color_scheme", "label": "Story color scheme", "default": "scheme-1" },
+    { "type": "color_scheme", "id": "spotlight_color_scheme", "label": "Spotlight color scheme", "default": "scheme-3" },
     { "type": "color_scheme", "id": "collections_color_scheme", "label": "Collections color scheme", "default": "scheme-2" },
     { "type": "color_scheme", "id": "products_color_scheme", "label": "Products color scheme", "default": "scheme-1" },
     { "type": "color_scheme", "id": "best_sellers_color_scheme", "label": "Best sellers color scheme", "default": "scheme-3" },
@@ -203,6 +241,15 @@
     { "type": "textarea", "id": "story_copy", "label": "Story copy", "default": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal." },
     { "type": "text", "id": "story_button", "label": "Story button", "default": "Meet JewelleryFunk" },
     { "type": "url", "id": "story_link", "label": "Story link" },
+    { "type": "header", "content": "Collection spotlight" },
+    { "type": "paragraph", "content": "Promote one special collection between the story and the collection overview. Leave the collection empty to hide this area." },
+    { "type": "collection", "id": "spotlight_collection", "label": "Collection" },
+    { "type": "image_picker", "id": "spotlight_image", "label": "Main image override" },
+    { "type": "image_picker", "id": "spotlight_detail_image", "label": "Small detail image (optional)" },
+    { "type": "text", "id": "spotlight_eyebrow", "label": "Eyebrow", "default": "The special edit" },
+    { "type": "text", "id": "spotlight_heading", "label": "Heading", "info": "Uses the collection title when left empty." },
+    { "type": "textarea", "id": "spotlight_copy", "label": "Text", "default": "A collection made for the moments that deserve a little more." },
+    { "type": "text", "id": "spotlight_button", "label": "Button label", "default": "Discover the collection" },
     { "type": "url", "id": "collections_link", "label": "All collections link" },
     { "type": "collection", "id": "featured_collection", "label": "Featured product collection" },
     { "type": "text", "id": "products_heading", "label": "Products heading", "default": "The new essentials." },
