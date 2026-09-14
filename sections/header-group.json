@@ -100,6 +100,7 @@
       "block_order": [
         "announcement_AP7H43"
       ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -130,6 +131,7 @@
       "block_order": [
         "announcement_zirD8b"
       ],
+      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
