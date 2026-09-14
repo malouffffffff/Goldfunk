@@ -107,8 +107,23 @@
         </div>
 
         {% if section.settings.spotlight_detail_image != blank %}
-          <div class="jf-spotlight__detail" aria-hidden="true">
+          <div class="jf-spotlight__detail jf-spotlight__detail--1" aria-hidden="true">
             {{ section.settings.spotlight_detail_image | image_url: width: 900 | image_tag: widths: '320, 500, 700, 900', loading: 'lazy', alt: '' }}
+          </div>
+        {% endif %}
+        {% if section.settings.spotlight_detail_image_2 != blank %}
+          <div class="jf-spotlight__detail jf-spotlight__detail--2" aria-hidden="true">
+            {{ section.settings.spotlight_detail_image_2 | image_url: width: 700 | image_tag: widths: '260, 400, 550, 700', loading: 'lazy', alt: '' }}
+          </div>
+        {% endif %}
+        {% if section.settings.spotlight_detail_image_3 != blank %}
+          <div class="jf-spotlight__detail jf-spotlight__detail--3" aria-hidden="true">
+            {{ section.settings.spotlight_detail_image_3 | image_url: width: 800 | image_tag: widths: '280, 450, 600, 800', loading: 'lazy', alt: '' }}
+          </div>
+        {% endif %}
+        {% if section.settings.spotlight_detail_image_4 != blank %}
+          <div class="jf-spotlight__detail jf-spotlight__detail--4" aria-hidden="true">
+            {{ section.settings.spotlight_detail_image_4 | image_url: width: 700 | image_tag: widths: '260, 400, 550, 700', loading: 'lazy', alt: '' }}
           </div>
         {% endif %}
       </div>
@@ -245,7 +260,10 @@
     { "type": "paragraph", "content": "Promote one special collection between the story and the collection overview. Leave the collection empty to hide this area." },
     { "type": "collection", "id": "spotlight_collection", "label": "Collection" },
     { "type": "image_picker", "id": "spotlight_image", "label": "Main image override" },
-    { "type": "image_picker", "id": "spotlight_detail_image", "label": "Small detail image (optional)" },
+    { "type": "image_picker", "id": "spotlight_detail_image", "label": "Small detail image 1 (optional)" },
+    { "type": "image_picker", "id": "spotlight_detail_image_2", "label": "Small detail image 2 (optional)" },
+    { "type": "image_picker", "id": "spotlight_detail_image_3", "label": "Small detail image 3 (optional)" },
+    { "type": "image_picker", "id": "spotlight_detail_image_4", "label": "Small detail image 4 (optional)" },
     { "type": "text", "id": "spotlight_eyebrow", "label": "Eyebrow", "default": "The special edit" },
     { "type": "text", "id": "spotlight_heading", "label": "Heading", "info": "Uses the collection title when left empty." },
     { "type": "textarea", "id": "spotlight_copy", "label": "Text", "default": "A collection made for the moments that deserve a little more." },
