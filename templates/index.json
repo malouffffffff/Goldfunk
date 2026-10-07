@@ -157,9 +157,9 @@
         "collection": "bracelet",
         "eyebrow": "Armbänder",
         "heading": "Unsere Armbänder.",
+        "text": "",
+        "show_price": false,
         "show_without_products": false,
-        "products_to_show": 4,
-        "highlight_first": false,
         "show_link": true,
         "link_label": "Alle Armbänder"
       }
