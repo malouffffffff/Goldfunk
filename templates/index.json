@@ -240,9 +240,9 @@
           "name": "t:names.social_media_links",
           "settings": {
             "facebook_url": "",
-            "instagram_url": "",
+            "instagram_url": "https://www.instagram.com/jewelleryfunk/",
             "youtube_url": "",
-            "tiktok_url": "",
+            "tiktok_url": "https://www.tiktok.com/@jewelleryfunk",
             "twitter_url": "",
             "threads_url": "",
             "linkedin_url": "",
