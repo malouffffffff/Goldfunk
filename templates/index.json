@@ -9,8 +9,57 @@
  */
 {
   "sections": {
-    "premium_home": {
-      "type": "premium-home",
+    "jf_hero": {
+      "type": "jf-hero",
+      "settings": {
+        "hero_color_scheme": "",
+        "hero_image": "shopify://shop_images/PHOTO-2026-06-04-11-05-54.jpg",
+        "hero_background_width": 100,
+        "hero_background_height": 55,
+        "hero_background_x": 50,
+        "hero_background_y": 25,
+        "band_image_1": "shopify://shop_images/PHOTO-2026-01-25-19-31-28_2.jpg",
+        "band_image_2": "shopify://shop_images/IMG_8789.jpg",
+        "band_image_3": "shopify://shop_images/IMG_1877.jpg",
+        "band_image_4": "shopify://shop_images/DSC00417.jpg",
+        "band_image_5": "shopify://shop_images/PHOTO-2026-06-04-11-05-53.jpg",
+        "band_image_6": "shopify://shop_images/DSC01324_98dcf13f-014d-4341-a5fd-13c215413c28.jpg",
+        "band_image_9": "shopify://shop_images/267551c0-1c69-483a-be87-2ae46f4cbcdb.jpg",
+        "band_image_10": "shopify://shop_images/IMG_1351.jpg",
+        "hero_logo_position": "bottom-right",
+        "hero_logo_size": 20,
+        "hero_scroll_length": 200,
+        "hero_eyebrow": "JewelleryFunk",
+        "hero_heading": "Your daily dose of gold",
+        "hero_copy": "Designed to move with you.",
+        "hero_button": "Explore the collection",
+        "hero_link": ""
+      }
+    },
+    "jf_story": {
+      "type": "jf-story",
+      "settings": {
+        "story_color_scheme": "",
+        "story_eyebrow": "Our point of view",
+        "story_heading": "Handmade with character",
+        "story_copy": "Each piece is carefully and consciously crafted by hand. \nEvery detail is chosen with curiosity & care. Each colour & texture is for the small surprises it brings to life.",
+        "story_button": "Meet JewelleryFunk",
+        "story_link": ""
+      }
+    },
+    "jf_spotlight": {
+      "type": "jf-spotlight",
+      "settings": {
+        "spotlight_color_scheme": "",
+        "spotlight_collection": "wiesn-gaudi",
+        "spotlight_eyebrow": "",
+        "spotlight_heading": "",
+        "spotlight_copy": "pick your color choose your charm!",
+        "spotlight_button": "Discover the collection"
+      }
+    },
+    "jf_collections": {
+      "type": "jf-collections",
       "blocks": {
         "collection_riQWkk": {
           "type": "collection",
@@ -96,47 +145,22 @@
         "collection_JU3zY7"
       ],
       "settings": {
-        "home_color_scheme": "",
-        "hero_color_scheme": "",
-        "story_color_scheme": "",
-        "spotlight_color_scheme": "",
         "collections_color_scheme": "",
+        "collections_link": ""
+      }
+    },
+    "jf_products": {
+      "type": "jf-products",
+      "settings": {
         "products_color_scheme": "",
-        "best_sellers_color_scheme": "scheme-1",
-        "hero_image": "shopify://shop_images/PHOTO-2026-06-04-11-05-54.jpg",
-        "hero_background_width": 100,
-        "hero_background_height": 55,
-        "hero_background_x": 50,
-        "hero_background_y": 25,
-        "band_image_1": "shopify://shop_images/PHOTO-2026-01-25-19-31-28_2.jpg",
-        "band_image_2": "shopify://shop_images/IMG_8789.jpg",
-        "band_image_3": "shopify://shop_images/IMG_1877.jpg",
-        "band_image_4": "shopify://shop_images/DSC00417.jpg",
-        "band_image_5": "shopify://shop_images/PHOTO-2026-06-04-11-05-53.jpg",
-        "band_image_6": "shopify://shop_images/DSC01324_98dcf13f-014d-4341-a5fd-13c215413c28.jpg",
-        "band_image_9": "shopify://shop_images/267551c0-1c69-483a-be87-2ae46f4cbcdb.jpg",
-        "band_image_10": "shopify://shop_images/IMG_1351.jpg",
-        "hero_logo_position": "bottom-right",
-        "hero_logo_size": 20,
-        "hero_scroll_length": 200,
-        "hero_eyebrow": "JewelleryFunk",
-        "hero_heading": "Your daily dose of gold",
-        "hero_copy": "Designed to move with you.",
-        "hero_button": "Explore the collection",
-        "hero_link": "",
-        "story_eyebrow": "Our point of view",
-        "story_heading": "Handmade with character",
-        "story_copy": "Each piece is carefully and consciously crafted by hand. \nEvery detail is chosen with curiosity & care. Each colour & texture is for the small surprises it brings to life.",
-        "story_button": "Meet JewelleryFunk",
-        "story_link": "",
-        "spotlight_collection": "wiesn-gaudi",
-        "spotlight_eyebrow": "",
-        "spotlight_heading": "",
-        "spotlight_copy": "pick your color choose your charm!",
-        "spotlight_button": "Discover the collection",
-        "collections_link": "",
         "featured_collection": "",
-        "products_heading": "The new essentials.",
+        "products_heading": "The new essentials."
+      }
+    },
+    "jf_best_sellers": {
+      "type": "jf-best-sellers",
+      "settings": {
+        "best_sellers_color_scheme": "scheme-1",
         "best_seller_collection": "",
         "best_sellers_heading": "Most wanted."
       }
@@ -223,7 +247,6 @@
         "location_X8V4Y6",
         "location_YJB9EK"
       ],
-      "name": "JF Visit us",
       "settings": {
         "color_scheme": "scheme-2",
         "eyebrow": "In person",
@@ -245,7 +268,12 @@
     }
   },
   "order": [
-    "premium_home",
+    "jf_hero",
+    "jf_story",
+    "jf_spotlight",
+    "jf_collections",
+    "jf_products",
+    "jf_best_sellers",
     "spotify_playlist",
     "instagram_feed",
     "visit_us_BQCYMJ",

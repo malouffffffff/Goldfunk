@@ -1,0 +1,27 @@
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  <section class="jf-story color-{{ section.settings.story_color_scheme }}">
+    <div data-jf-reveal>
+      <span class="jf-eyebrow">{{ section.settings.story_eyebrow }}</span>
+      <h2 class="jf-story__statement">{{ section.settings.story_heading }}</h2>
+    </div>
+    <div class="jf-story__detail" data-jf-reveal>
+      <p>{{ section.settings.story_copy }}</p>
+      {% if section.settings.story_link != blank %}<a class="jf-link" href="{{ section.settings.story_link }}">{{ section.settings.story_button }}</a>{% endif %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "JewelleryFunk – Story",
+  "settings": [
+    { "type": "color_scheme", "id": "story_color_scheme", "label": "Story color scheme", "default": "scheme-1" },
+    { "type": "text", "id": "story_eyebrow", "label": "Story eyebrow", "default": "Our point of view" },
+    { "type": "textarea", "id": "story_heading", "label": "Story heading", "default": "The art of everyday gold." },
+    { "type": "textarea", "id": "story_copy", "label": "Story copy", "default": "JewelleryFunk is created for the rituals, gestures and memories that make an ordinary day yours. Quietly distinctive, deliberately personal." },
+    { "type": "text", "id": "story_button", "label": "Story button", "default": "Meet JewelleryFunk" },
+    { "type": "url", "id": "story_link", "label": "Story link" }
+  ],
+  "presets": [{ "name": "JewelleryFunk – Story" }]
+}
+{% endschema %}

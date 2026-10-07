@@ -1,0 +1,33 @@
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  {% assign best_seller_collection = section.settings.best_seller_collection %}
+  {% if best_seller_collection != blank %}
+    <section class="jf-best-sellers color-{{ section.settings.best_sellers_color_scheme }}">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">Most loved</span><h2>{{ section.settings.best_sellers_heading }}</h2></div>
+        <a href="{{ best_seller_collection.url }}" class="jf-link">Shop best sellers</a>
+      </div>
+      <div class="jf-best-sellers__grid">
+        {% for product in best_seller_collection.products limit: 4 %}
+          <a href="{{ product.url }}" class="jf-product" data-jf-reveal>
+            <div class="jf-product__image">
+              {% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1200 | image_tag: widths: '360, 600, 900, 1200', loading: 'lazy', alt: product.title }}{% endif %}
+            </div>
+            <div class="jf-product__meta"><span class="jf-product__title">{{ product.title }}</span><span>{{ product.price | money }}</span></div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "JF – Best Sellers",
+  "settings": [
+    { "type": "color_scheme", "id": "best_sellers_color_scheme", "label": "Best sellers color scheme", "default": "scheme-3" },
+    { "type": "collection", "id": "best_seller_collection", "label": "Best sellers collection" },
+    { "type": "text", "id": "best_sellers_heading", "label": "Best sellers heading", "default": "Most wanted." }
+  ],
+  "presets": [{ "name": "JewelleryFunk – Best Sellers" }]
+}
+{% endschema %}

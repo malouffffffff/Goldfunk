@@ -1,0 +1,36 @@
+{% liquid
+  assign featured_collection = section.settings.featured_collection
+%}
+
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  {% if featured_collection != blank %}
+    <section class="jf-products color-{{ section.settings.products_color_scheme }}">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">Selected pieces</span><h2>{{ section.settings.products_heading }}</h2></div>
+        <a href="{{ featured_collection.url }}" class="jf-link">View all</a>
+      </div>
+      <div class="jf-product-grid">
+        {% for product in featured_collection.products limit: 4 %}
+          <a href="{{ product.url }}" class="jf-product" data-jf-reveal>
+            <div class="jf-product__image">
+              {% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1000 | image_tag: widths: '300, 500, 750, 1000', loading: 'lazy', alt: product.title }}{% endif %}
+            </div>
+            <div class="jf-product__meta"><span class="jf-product__title">{{ product.title }}</span><span>{{ product.price | money }}</span></div>
+          </a>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "JewelleryFunk – Products",
+  "settings": [
+    { "type": "color_scheme", "id": "products_color_scheme", "label": "Products color scheme", "default": "scheme-1" },
+    { "type": "collection", "id": "featured_collection", "label": "Featured product collection" },
+    { "type": "text", "id": "products_heading", "label": "Products heading", "default": "The new essentials." }
+  ],
+  "presets": [{ "name": "JewelleryFunk – Products" }]
+}
+{% endschema %}

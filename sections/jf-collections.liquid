@@ -1,0 +1,42 @@
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  {% if section.blocks.size > 0 %}
+    <section class="jf-collections color-{{ section.settings.collections_color_scheme }}">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">Curated for you</span><h2>Pieces with<br>presence.</h2></div>
+        {% if section.settings.collections_link != blank %}<a href="{{ section.settings.collections_link }}" class="jf-link">All collections</a>{% endif %}
+      </div>
+      <div class="jf-collection-grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'collection' %}
+            {% assign collection = block.settings.collection %}
+            <a class="jf-collection-card" href="{{ collection.url | default: '#' }}" {{ block.shopify_attributes }} data-jf-reveal>
+              <div class="jf-collection-card__image">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 1200 | image_tag: widths: '400, 700, 1000, 1200', loading: 'lazy', alt: block.settings.heading | default: collection.title }}
+                {% elsif collection.featured_image != blank %}
+                  {{ collection.featured_image | image_url: width: 1200 | image_tag: widths: '400, 700, 1000, 1200', loading: 'lazy', alt: collection.title }}
+                {% endif %}
+              </div>
+              <h3>{{ block.settings.heading | default: collection.title | default: 'Collection' }}</h3>
+              <span>{{ block.settings.caption | default: 'Discover the collection' }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "JF – Collections",
+  "settings": [
+    { "type": "color_scheme", "id": "collections_color_scheme", "label": "Collections color scheme", "default": "scheme-2" },
+    { "type": "url", "id": "collections_link", "label": "All collections link" }
+  ],
+  "blocks": [
+    { "type": "collection", "name": "Collection", "limit": 8, "settings": [ { "type": "collection", "id": "collection", "label": "Collection" }, { "type": "image_picker", "id": "image", "label": "Image override" }, { "type": "text", "id": "heading", "label": "Heading" }, { "type": "text", "id": "caption", "label": "Caption" } ] }
+  ],
+  "presets": [{ "name": "JewelleryFunk – Collections", "blocks": [{ "type": "collection" }, { "type": "collection" }, { "type": "collection" }] }]
+}
+{% endschema %}
