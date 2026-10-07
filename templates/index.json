@@ -61,12 +61,12 @@
     "jf_collections": {
       "type": "jf-collections",
       "blocks": {
-        "collection_riQWkk": {
+        "collection_Nfmnxc": {
           "type": "collection",
           "settings": {
-            "collection": "bracelet",
-            "image": "shopify://shop_images/8281E589-B764-4A96-A0DA-BAC21AE3BBB7.jpg",
-            "heading": "",
+            "collection": "wiesn-gaudi",
+            "image": "shopify://shop_images/37669B3B-8ECD-4929-8196-22F9FFF2A09D.jpg",
+            "heading": "Your Choker, Your Way",
             "caption": ""
           }
         },
@@ -135,7 +135,7 @@
         }
       },
       "block_order": [
-        "collection_riQWkk",
+        "collection_Nfmnxc",
         "collection_mFKT7b",
         "collection_kBhtic",
         "collection_rfpnRG",
