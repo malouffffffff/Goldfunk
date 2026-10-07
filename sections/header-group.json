@@ -87,8 +87,8 @@
           "type": "_announcement",
           "settings": {
             "text": "&nbsp;<strong>SPEND €35 & ENJOY FREE SHIPPING</strong>&nbsp;✨",
-            "link": "",
-            "font": "var(--font-body--family)",
+            "link": "shopify://policies/shipping-policy",
+            "font": "var(--font-heading--family)",
             "font_size": "1rem",
             "weight": "",
             "letter_spacing": "normal",
