@@ -161,7 +161,7 @@
         "show_price": false,
         "show_without_products": false,
         "show_link": true,
-        "link_label": "Alle Armbänder"
+        "link_label": "all bracelets"
       }
     },
     "spotify_playlist": {
