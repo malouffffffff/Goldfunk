@@ -62,3 +62,53 @@
     event.target.querySelectorAll?.('.jf-home').forEach(setupHome);
   });
 })();
+
+// Keeps every word whole: if a single word is wider than its container at the
+// current viewport, the heading's font size is scaled down instead of breaking the word.
+(() => {
+  const selector = '#MainContent :is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6)';
+  const fitted = new WeakSet();
+
+  const availableWidth = (element) => {
+    const parent = element.parentElement;
+    if (!parent) return element.clientWidth;
+    const style = getComputedStyle(parent);
+    return parent.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+  };
+
+  const fitElement = (element) => {
+    if (element.closest('jumbo-text, .jf-spotlight__marquee')) return;
+    if (element.style.fontSize && !fitted.has(element)) return;
+    const style = getComputedStyle(element);
+    if (style.whiteSpace.includes('nowrap') || style.textOverflow === 'ellipsis') return;
+
+    element.style.removeProperty('font-size');
+    fitted.delete(element);
+    if (!element.clientWidth) return;
+
+    for (let attempt = 0; attempt < 4; attempt += 1) {
+      const target = Math.min(element.clientWidth, availableWidth(element));
+      const needed = Math.max(element.scrollWidth, element.offsetWidth);
+      if (needed <= target + 1) break;
+      const fontSize = parseFloat(getComputedStyle(element).fontSize);
+      element.style.fontSize = `${Math.floor(fontSize * (target / needed) * 2) / 2}px`;
+      fitted.add(element);
+    }
+  };
+
+  let frame;
+  const fitWords = () => {
+    if (frame) return;
+    frame = window.requestAnimationFrame(() => {
+      frame = undefined;
+      document.querySelectorAll(selector).forEach(fitElement);
+    });
+  };
+
+  fitWords();
+  document.fonts?.ready.then(fitWords);
+  window.addEventListener('load', fitWords);
+  window.addEventListener('resize', fitWords, { passive: true });
+  window.addEventListener('orientationchange', fitWords, { passive: true });
+  document.addEventListener('shopify:section:load', fitWords);
+})();
