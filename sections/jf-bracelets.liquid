@@ -1,0 +1,66 @@
+{% liquid
+  assign bracelet_collection = section.settings.collection
+  assign has_products = false
+  if bracelet_collection != blank and bracelet_collection.products_count > 0
+    assign has_products = true
+  endif
+%}
+
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  {% if has_products or section.settings.show_without_products or request.design_mode %}
+    <section class="jf-products jf-bracelets color-{{ section.settings.color_scheme }}">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div>
+          <span class="jf-eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2>
+          {% if section.settings.text != blank %}<p class="jf-bracelets__text">{{ section.settings.text | newline_to_br }}</p>{% endif %}
+        </div>
+        {% if has_products and section.settings.show_link and section.settings.link_label != blank %}
+          <a href="{{ bracelet_collection.url }}" class="jf-link">{{ section.settings.link_label }}</a>
+        {% endif %}
+      </div>
+      {% if has_products %}
+        {% paginate bracelet_collection.products by 250 %}
+          <div class="jf-bracelets__track">
+            {% for product in bracelet_collection.products %}
+              <a href="{{ product.url }}" class="jf-product" data-jf-reveal>
+                <div class="jf-product__image">
+                  {% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1200 | image_tag: widths: '360, 600, 900, 1200', loading: 'lazy', alt: product.title }}{% endif %}
+                </div>
+                <div class="jf-product__meta">
+                  <span class="jf-product__title">{{ product.title }}</span>
+                  {% if section.settings.show_price %}<span>{{ product.price | money }}</span>{% endif %}
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        {% endpaginate %}
+      {% endif %}
+    </section>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  /* Same card size and gap as the Best Sellers grid (4 per row, 2 on phones), but as one row that scrolls sideways through the whole collection. */
+  .jf-bracelets__track { --jf-track-gap: clamp(1.3rem, 2.4vw, 2.8rem); display: grid; gap: var(--jf-track-gap); grid-auto-columns: calc((100% - 3 * var(--jf-track-gap)) / 4); grid-auto-flow: column; margin: auto; max-width: 1440px; overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: clamp(1rem, 2vw, 1.5rem); scroll-snap-type: inline mandatory; scrollbar-color: var(--color-primary) transparent; }
+  .jf-bracelets__track > .jf-product { scroll-snap-align: start; }
+  .jf-bracelets__text { line-height: 1.75; margin: 1.2rem 0 0; max-width: 30rem; }
+  @media screen and (max-width: 749px) { .jf-bracelets__track { grid-auto-columns: calc((100% - var(--jf-track-gap)) / 2); } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "JewelleryFunk – Armbänder",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "collection", "id": "collection", "label": "Kollektion", "info": "Alle Produkte der Kollektion werden in einer seitlich scrollbaren Reihe angezeigt." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Armbänder" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Unsere Armbänder." },
+    { "type": "textarea", "id": "text", "label": "Kleiner Text (optional)", "info": "Erscheint unter der Überschrift. Leer lassen, um ihn auszublenden." },
+    { "type": "checkbox", "id": "show_price", "label": "Preise anzeigen", "default": true },
+    { "type": "checkbox", "id": "show_without_products", "label": "Überschrift auch ohne Produkte anzeigen", "info": "Sonst wird die Section im Shop ausgeblendet, solange keine Kollektion mit Produkten gewählt ist.", "default": false },
+    { "type": "checkbox", "id": "show_link", "label": "Link zur Kollektion anzeigen", "default": true },
+    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Alle Armbänder" }
+  ],
+  "presets": [{ "name": "JewelleryFunk – Armbänder" }]
+}
+{% endschema %}

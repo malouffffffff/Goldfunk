@@ -6,12 +6,15 @@
     home.dataset.jfReady = 'true';
 
     const hero = home.querySelector('.jf-hero');
-    const collections = home.querySelector('.jf-spotlight, .jf-collections, .jf-products');
 
     if (!headerListenerAdded) {
       const headerState = () => {
+        // The header is only transparent while it sits on the hero; as soon as the next section
+        // slides under it, it switches to the solid cream state so it never covers content.
+        const heroSection = document.querySelector('.jf-home .jf-hero');
         const headerGroupHeight = parseFloat(getComputedStyle(document.body).getPropertyValue('--header-group-height')) || 120;
-        const scrolledPastIntro = collections ? window.scrollY >= collections.offsetTop : window.scrollY > headerGroupHeight;
+        const headerHeight = document.querySelector('#header-component')?.offsetHeight || headerGroupHeight;
+        const scrolledPastIntro = heroSection ? window.scrollY >= heroSection.offsetTop + heroSection.offsetHeight - headerHeight : window.scrollY > headerGroupHeight;
         document.body.classList.toggle('jf-header-scrolled', scrolledPastIntro);
       };
       headerState();
@@ -27,6 +30,7 @@
       reveals.forEach((element) => observer.observe(element));
     } else reveals.forEach((element) => element.classList.add('is-visible'));
 
+    if (!hero) return;
     const bands = [...home.querySelectorAll('[data-jf-hero-band]')];
     let heroAnimationFrame;
     const moveHero = () => {
