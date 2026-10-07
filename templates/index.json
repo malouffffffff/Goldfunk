@@ -164,22 +164,6 @@
         "link_label": "Alle Armbänder"
       }
     },
-    "jf_products": {
-      "type": "jf-products",
-      "settings": {
-        "products_color_scheme": "",
-        "featured_collection": "",
-        "products_heading": "The new essentials."
-      }
-    },
-    "jf_best_sellers": {
-      "type": "jf-best-sellers",
-      "settings": {
-        "best_sellers_color_scheme": "scheme-1",
-        "best_seller_collection": "",
-        "best_sellers_heading": "Most wanted."
-      }
-    },
     "spotify_playlist": {
       "type": "spotify-playlist",
       "settings": {
@@ -289,8 +273,6 @@
     "jf_spotlight",
     "jf_collections",
     "jf_bracelets_MPBAdY",
-    "jf_products",
-    "jf_best_sellers",
     "spotify_playlist",
     "instagram_feed",
     "visit_us_BQCYMJ",
