@@ -80,13 +80,13 @@
         "collection_color_scheme": "default"
       }
     },
-    "header_announcements_fyCnck": {
+    "header_announcements_9FapBR": {
       "type": "header-announcements",
       "blocks": {
-        "announcement_AP7H43": {
+        "announcement_zTikxY": {
           "type": "_announcement",
           "settings": {
-            "text": "SUMMER-BREAK: NO SHIPPING 16.08 - 06.09",
+            "text": "&nbsp;<strong>SPEND €35 & ENJOY FREE SHIPPING</strong>&nbsp;✨",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
@@ -98,40 +98,8 @@
         }
       },
       "block_order": [
-        "announcement_AP7H43"
+        "announcement_zTikxY"
       ],
-      "disabled": true,
-      "name": "t:names.announcement_bar",
-      "settings": {
-        "speed": 5,
-        "section_width": "page-width",
-        "color_scheme": "",
-        "divider_width": 0,
-        "padding-block-start": 15,
-        "padding-block-end": 15
-      }
-    },
-    "header_announcements_n8GikB": {
-      "type": "header-announcements",
-      "blocks": {
-        "announcement_zirD8b": {
-          "type": "_announcement",
-          "settings": {
-            "text": "<strong>Orders can still be placed and will be shipped from 07.09.</strong> ⭐",
-            "link": "",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "weight": "",
-            "letter_spacing": "normal",
-            "case": "none"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "announcement_zirD8b"
-      ],
-      "disabled": true,
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
@@ -145,7 +113,6 @@
   },
   "order": [
     "header_section",
-    "header_announcements_fyCnck",
-    "header_announcements_n8GikB"
+    "header_announcements_9FapBR"
   ]
 }
