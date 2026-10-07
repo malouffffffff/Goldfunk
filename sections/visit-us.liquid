@@ -55,16 +55,16 @@
   .jf-visit-us__copy { line-height: 1.75; margin: auto; max-width: 35rem; }
   .jf-visit-us__locations { display: grid; gap: clamp(2rem, 5vw, 5rem); grid-template-columns: repeat(2, minmax(0, 1fr)); margin: auto; max-width: 100rem; }
   .jf-visit-us__location { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(13rem, .9fr); grid-template-rows: auto auto; overflow: hidden; }
-  .jf-visit-us__image { aspect-ratio: .86; background: var(--color-primary); grid-row: span 2; overflow: hidden; }
-  .jf-visit-us__image img, .jf-visit-us__image svg { display: block; height: 100%; object-fit: cover; width: 100%; }
+  .jf-visit-us__image { background: var(--color-primary); grid-row: span 2; min-height: 22rem; overflow: hidden; position: relative; }
+  .jf-visit-us__image img, .jf-visit-us__image svg { display: block; height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%; }
   .jf-visit-us__details { align-content: center; display: grid; justify-items: start; min-inline-size: 0; padding: clamp(1.5rem, 3vw, 3.5rem); }
   .jf-visit-us__details h3 { font-size: clamp(2rem, 3.5vw, 4rem); margin: .65rem 0 1rem; max-inline-size: 100%; }
   .jf-visit-us__address { line-height: 1.65; margin-bottom: 1.35rem; max-inline-size: 100%; }
   .jf-visit-us__map { background: var(--color-foreground); min-height: 11rem; }
   .jf-visit-us__map iframe { border: 0; display: block; height: 100%; min-height: 11rem; width: 100%; }
   .jf-visit-us .jf-link { font-size: .61rem; }
-  @media screen and (max-width: 989px) { .jf-visit-us__locations { grid-template-columns: 1fr; max-width: 48rem; } }
-  @media screen and (max-width: 749px) { .jf-visit-us__location { grid-template-columns: 1fr; } .jf-visit-us__image { aspect-ratio: 1.08; grid-row: auto; } .jf-visit-us__details { min-height: 15rem; } .jf-visit-us__details h3 { font-size: clamp(2.2rem, 8.5vw, 3.25rem); } .jf-visit-us__map, .jf-visit-us__map iframe { min-height: 13rem; } }
+  @media screen and (max-width: 1199px) { .jf-visit-us__locations { grid-template-columns: 1fr; max-width: 48rem; } }
+  @media screen and (max-width: 749px) { .jf-visit-us__location { grid-template-columns: 1fr; } .jf-visit-us__image { aspect-ratio: 1.08; grid-row: auto; min-height: 0; } .jf-visit-us__details { min-height: 15rem; } .jf-visit-us__details h3 { font-size: clamp(2.2rem, 8.5vw, 3.25rem); } .jf-visit-us__map, .jf-visit-us__map iframe { min-height: 13rem; } }
 {% endstylesheet %}
 
 {% schema %}

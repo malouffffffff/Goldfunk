@@ -9,10 +9,12 @@
 
     if (!headerListenerAdded) {
       const headerState = () => {
-        // Each home area is its own section, so look up the first content area page-wide (sections can be reordered).
-        const collections = document.querySelector('.jf-home .jf-spotlight, .jf-home .jf-collections, .jf-home .jf-products');
+        // The header is only transparent while it sits on the hero; as soon as the next section
+        // slides under it, it switches to the solid cream state so it never covers content.
+        const heroSection = document.querySelector('.jf-home .jf-hero');
         const headerGroupHeight = parseFloat(getComputedStyle(document.body).getPropertyValue('--header-group-height')) || 120;
-        const scrolledPastIntro = collections ? window.scrollY >= collections.offsetTop : window.scrollY > headerGroupHeight;
+        const headerHeight = document.querySelector('#header-component')?.offsetHeight || headerGroupHeight;
+        const scrolledPastIntro = heroSection ? window.scrollY >= heroSection.offsetTop + heroSection.offsetHeight - headerHeight : window.scrollY > headerGroupHeight;
         document.body.classList.toggle('jf-header-scrolled', scrolledPastIntro);
       };
       headerState();
