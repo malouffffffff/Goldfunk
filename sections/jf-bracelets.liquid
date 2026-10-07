@@ -1,0 +1,57 @@
+{% liquid
+  assign bracelet_collection = section.settings.collection
+  assign has_products = false
+  if bracelet_collection != blank and bracelet_collection.products_count > 0
+    assign has_products = true
+  endif
+
+  # Reuses the existing grids: the Best Sellers layout (first product large) or the plain four-column grid.
+  if section.settings.highlight_first
+    assign section_class = 'jf-best-sellers'
+  else
+    assign section_class = 'jf-products'
+  endif
+%}
+
+<div class="jf-home" id="jf-home-{{ section.id }}">
+  {% if has_products or section.settings.show_without_products or request.design_mode %}
+    <section class="{{ section_class }} jf-bracelets color-{{ section.settings.color_scheme }}">
+      <div class="jf-section-heading" data-jf-reveal>
+        <div><span class="jf-eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2></div>
+        {% if has_products and section.settings.show_link and section.settings.link_label != blank %}
+          <a href="{{ bracelet_collection.url }}" class="jf-link">{{ section.settings.link_label }}</a>
+        {% endif %}
+      </div>
+      {% if has_products %}
+        <div class="jf-best-sellers__grid">
+          {% for product in bracelet_collection.products limit: section.settings.products_to_show %}
+            <a href="{{ product.url }}" class="jf-product" data-jf-reveal>
+              <div class="jf-product__image">
+                {% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1200 | image_tag: widths: '360, 600, 900, 1200', loading: 'lazy', alt: product.title }}{% endif %}
+              </div>
+              <div class="jf-product__meta"><span class="jf-product__title">{{ product.title }}</span><span>{{ product.price | money }}</span></div>
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </section>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "JewelleryFunk – Armbänder",
+  "settings": [
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "collection", "id": "collection", "label": "Kollektion", "info": "Ohne Kollektion mit Produkten werden keine Produktkarten angezeigt." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Armbänder" },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Unsere Armbänder." },
+    { "type": "checkbox", "id": "show_without_products", "label": "Überschrift auch ohne Produkte anzeigen", "info": "Sonst wird die Section im Shop ausgeblendet, solange keine Kollektion mit Produkten gewählt ist.", "default": false },
+    { "type": "range", "id": "products_to_show", "label": "Anzahl Produkte", "min": 2, "max": 16, "step": 1, "default": 4 },
+    { "type": "checkbox", "id": "highlight_first", "label": "Erstes Produkt groß darstellen", "info": "Wie bei den Best Sellers.", "default": false },
+    { "type": "checkbox", "id": "show_link", "label": "Link zur Kollektion anzeigen", "default": true },
+    { "type": "text", "id": "link_label", "label": "Link-Text", "default": "Alle Armbänder" }
+  ],
+  "presets": [{ "name": "JewelleryFunk – Armbänder" }]
+}
+{% endschema %}
